@@ -3,8 +3,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+
 # Use postgresql as the database for Active Record
-gem 'pg'
+#gem 'pg'
+#
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -33,6 +37,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
+
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
@@ -44,10 +49,16 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'openehr-rails'
-
-gem 'rspec-rails'
-
 gem 'database_cleaner'
 
 gem 'spring'
+
+gem 'mml-ruby'
+gem 'openehr'
+gem 'openehr-rails'
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
