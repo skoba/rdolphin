@@ -1,4 +1,5 @@
 Rdolphin::Application.routes.draw do
+  resources :open_ehr_ehr_cluster_mml_name_v1
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

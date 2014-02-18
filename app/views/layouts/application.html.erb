@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="banner">
+ <%= form_tag '', :method => 'get', class: 'locale' do %>
+  <%= select_tag 'locale',
+      options_for_select(LANGUAGES, I18n.locale.to_s), 
+      onchange: 'this.form.submit()' %>
+ <% end %>
+</div>
 
 <%= yield %>
 

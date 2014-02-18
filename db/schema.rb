@@ -11,9 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140212015116) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "archetypes", force: true do |t|
+    t.string   "archetypeid"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rms", force: true do |t|
+    t.string   "node_id"
+    t.string   "path"
+    t.integer  "archetype_id"
+    t.string   "text_value"
+    t.float    "num_value"
+    t.date     "date_value"
+    t.time     "time_value"
+    t.boolean  "bool_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rms", ["archetype_id"], name: "index_rms_on_archetype_id"
 
 end

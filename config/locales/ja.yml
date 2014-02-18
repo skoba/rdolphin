@@ -1,4 +1,4 @@
-en:
+ja:
   date: # month name and date format should be customized as you need.
     month_names: [~, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     order: [year, month, day]
@@ -6,13 +6,13 @@ en:
     application:
   open_ehr_ehr_cluster_mml_name_v1:
     index: &ontology
-      at0000: "Mml name component"
-      at0001: "mmlNm:given"
-      at0002: "mmlNm:family"
-      at0003: "mmlNm:middle"
-      at0004: "mmlNm:fullname"
-      at0005: "mmlNm:prefix"
-      at0006: "mmlNm:degree"
+      at0000: "Mml name"
+      at0001: "名"
+      at0002: "姓"
+      at0003: "ミドルネーム"
+      at0004: "フルネーム"
+      at0005: "敬称"
+      at0006: "学位"
     new: *ontology
     form: *ontology
     show: *ontology
