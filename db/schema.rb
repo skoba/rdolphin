@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140212015116) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "archetypes", force: true do |t|
     t.string   "archetypeid"
     t.string   "uid"
@@ -33,6 +36,6 @@ ActiveRecord::Schema.define(version: 20140212015116) do
     t.datetime "updated_at"
   end
 
-  add_index "rms", ["archetype_id"], name: "index_rms_on_archetype_id"
+  add_index "rms", ["archetype_id"], name: "index_rms_on_archetype_id", using: :btree
 
 end
