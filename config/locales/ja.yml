@@ -95,3 +95,6 @@ ja:
     form: *ontology
     show: *ontology
     edit: *ontology
+  test_module:
+    index: &test_ontology
+      at0000: 検査リスト

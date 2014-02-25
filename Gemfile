@@ -38,4 +38,9 @@ gem 'openehr-rails'
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'cucumber'
+  gem 'factory_girl_rails'
+  gem 'forgery'
 end

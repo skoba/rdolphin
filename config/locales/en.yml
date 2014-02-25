@@ -95,3 +95,6 @@ en:
     form: *ontology
     show: *ontology
     edit: *ontology
+  test_module:
+    index: &test_ontology
+      at0000: "Labo test module"

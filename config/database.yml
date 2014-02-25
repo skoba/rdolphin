@@ -21,7 +21,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: rdolphin_development
-  pool: 5
+  pool: 15
   username: postgres
 
 # Warning: The database defined as "test" will be erased and
@@ -31,14 +31,14 @@ test: &test
   adapter: postgresql
   encoding: unicode
   database: rdolphin_test
-  pool: 5
+  pool: 15
   username: postgres
 
 production:
   adapter: postgresql
   encoding: unicode
   database: rdolphin_production
-  pool: 5
+  pool: 15
   username: postgres
 
 # cucumber:

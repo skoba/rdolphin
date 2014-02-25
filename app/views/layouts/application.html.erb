@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>Rdolphin</title>
+  <meta charset="utf-8" />
+  <title>rDolphin</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="banner">
- <%= form_tag '', :method => 'get', class: 'locale' do %>
-  <%= select_tag 'locale',
-      options_for_select(LANGUAGES, I18n.locale.to_s), 
-      onchange: 'this.form.submit()' %>
- <% end %>
+<div class="container">
+  <%= yield %>
 </div>
-
-<%= yield %>
-
 </body>
 </html>
