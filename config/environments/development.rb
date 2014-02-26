@@ -1,4 +1,5 @@
 Rdolphin::Application.configure do
+  config.log_level = :warn
   config.cache_classes = false
   config.eager_load = false
 
@@ -10,6 +11,7 @@ Rdolphin::Application.configure do
   config.active_support.deprecation = :log
 
   config.active_record.migration_error = :page_load
+  
 
   config.assets.debug = true
 end

@@ -30,10 +30,12 @@ gem 'unicorn'
 
 gem 'database_cleaner'
 gem 'spring'
-
+gem 'kaminari'
+#gem 'twitter-bootstrap-kaminari-views'
 gem 'mml-ruby'
 gem 'openehr'
 gem 'openehr-rails'
+
 
 group :development, :test do
   gem 'rspec'

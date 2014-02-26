@@ -2,6 +2,8 @@ require 'securerandom'
 class TestModule
   include ActiveModel::Model
 
+#  paginates_per 50
+
   def self.create(attributes = {})
     TestModule.new(attributes)
   end
@@ -628,7 +630,7 @@ class TestModule
   end
 
   def at0061_1model
-    @at0061_1 ||= confat('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.1]/items[at0071]/items[at0061]/value')
+    @at0061_1 ||= conpath('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.1]/items[at0071]/items[at0061]/value')
   end
 
   def at0061_1
@@ -641,7 +643,7 @@ class TestModule
   end
 
   def at0061_2model
-    @at0061_2 ||= confat('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.2]/items[at0071]/items[at0061]/value')
+    @at0061_2 ||= conpath('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.2]/items[at0071]/items[at0061]/value')
   end
 
   def at0061_2
@@ -654,7 +656,7 @@ class TestModule
   end
 
   def at0061_3model
-    @at0061_3 ||= confat('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0071]/items[at0061]/value')
+    @at0061_3 ||= conpath('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0071]/items[at0061]/value')
   end
 
   def at0061_3
@@ -667,7 +669,7 @@ class TestModule
   end
 
   def at0061_4model
-    @at0061_4 ||= confat('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.4]/items[at0071]/items[at0061]/value')
+    @at0061_4 ||= conpath('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.4]/items[at0071]/items[at0061]/value')
   end
 
   def at0061_4
@@ -680,7 +682,7 @@ class TestModule
   end
 
   def at0061_5model
-    @at0061_5 ||= confat('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0071]/items[at0061]/value')
+    @at0061_5 ||= conpath('at0061', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0071]/items[at0061]/value')
   end
 
   def at0061_5
@@ -810,7 +812,7 @@ class TestModule
   end
 
   def at0070_1model
-    @at0070_1 ||= confat('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.1]/items[at0072]/items[at0070]/value')
+    @at0070_1 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.1]/items[at0072]/items[at0070]/value')
   end
 
   def at0070_1
@@ -823,7 +825,7 @@ class TestModule
   end
 
   def at0070_2model
-    @at0070_2 ||= confat('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.2]/items[at0072]/items[at0070]/value')
+    @at0070_2 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.2]/items[at0072]/items[at0070]/value')
   end
 
   def at0070_2
@@ -836,7 +838,7 @@ class TestModule
   end
 
   def at0070_3model
-    @at0070_3 ||= confat('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0072]/items[at0070.1]/value')
+    @at0070_3 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0072]/items[at0070.1]/value')
   end
 
   def at0070_3
@@ -849,7 +851,7 @@ class TestModule
   end
 
   def at0070_4model
-    @at0070_4 ||= confat('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.4]/items[at0072]/items[at0070.1]/value')
+    @at0070_4 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.4]/items[at0072]/items[at0070.1]/value')
   end
 
   def at0070_4
@@ -862,7 +864,7 @@ class TestModule
   end
 
   def at0070_5model
-    @at0070_5 ||= confat('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0072]/items[at0070.1]/value')
+    @at0070_5 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0072]/items[at0070.1]/value')
   end
 
   def at0070_5
@@ -901,7 +903,7 @@ class TestModule
   end
 
   def at0076_1model
-    @at0076_1 ||= confat('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.1]/items[at0075]/items[at0076]/value')
+    @at0076_1 ||= conpath('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.1]/items[at0075]/items[at0076]/value')
   end
 
   def at0076_1
@@ -914,7 +916,7 @@ class TestModule
   end
 
   def at0076_2model
-    @at0076_2 ||= confat('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.2]/items[at0075]/items[at0076]/value')
+    @at0076_2 ||= conpath('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.2]/items[at0075]/items[at0076]/value')
   end
 
   def at0076_2
@@ -927,7 +929,7 @@ class TestModule
   end
 
   def at0076_3model
-    @at0076_3 ||= confat('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0075]/items[at0076]/value')
+    @at0076_3 ||= conpath('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0075]/items[at0076]/value')
   end
 
   def at0076_3
@@ -940,7 +942,7 @@ class TestModule
   end
 
   def at0076_4model
-    @at0076_4 ||= confat('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.1]/items[at0075]/items[at0076]/value')
+    @at0076_4 ||= conpath('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.4]/items[at0075]/items[at0076]/value')
   end
 
   def at0076_4
@@ -953,7 +955,7 @@ class TestModule
   end
 
   def at0076_5model
-    @at0076_5 ||= confat('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0075]/items[at0076]/value')
+    @at0076_5 ||= conpath('at0076', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0075]/items[at0076]/value')
   end
 
   def at0076_5
@@ -1055,10 +1057,41 @@ class TestModule
     at0086model.text_value = at0086
     at0086model.save
   end
-  
+
+  def at0087model
+    @at0087 ||= confat('at0087', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0087]/value')
+  end
+
+  def at0087
+    at0087model.text_value
+  end
+
+  def at0087=(at0087)
+    at0087model.text_value = at0087
+    at0087model.save
+  end
+
+  def at0088model
+    @at0088 ||= confat('at0088', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0088]/value')
+  end
+
+  def at0088
+    at0088model.text_value
+  end
+
+  def at0088=(at0088)
+    at0088model.text_value = at0088
+    at0088model.save
+  end
+
   private
   def confat(node_id, path)
     archetype.rms.find_by(:node_id => node_id) ||
+      archetype.rms.build(:node_id => node_id, :path => path)
+  end
+
+  def conpath(node_id, path)
+    archetype.rms.find_by(path: path) ||
       archetype.rms.build(:node_id => node_id, :path => path)
   end
 

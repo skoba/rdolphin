@@ -6,6 +6,13 @@ class TestModuleController < ApplicationController
   end
 
   def show
+    @test_module = TestModule.find params[:id]
+    respond_to do |format|
+      format.html
+      format.json
+      format.xml
+#      format.mml
+    end
   end
 
   def new
