@@ -78,7 +78,7 @@ xml.mml('xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
           attributes['mmlLb:out'] = @test_module.at0088 if @test_module.at0088.present?
           xml.mmlLb :numValue, attributes, @test_module.at0070_1 if @test_module.at0070_1.present?
           attributes = Hash.new
-          attributes['mmlLb:uCode'] = @test_module.at0077 if @test_module.at0077p.present?
+          attributes['mmlLb:uCode'] = @test_module.at0077 if @test_module.at0077.present?
           attributes['mmlLb:uCodeId'] = @test_module.at0078 if @test_module.at0078.present?
           xml.mmlLb :unit, attributes, @test_module.at0076_1 if @test_module.at0076_1.present?
           attributes = Hash.new
