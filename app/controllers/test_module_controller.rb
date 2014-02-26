@@ -2,7 +2,7 @@ class TestModuleController < ApplicationController
   before_action :set_test_module, only: [:show, :edit, :update, :destroy]
 
   def index
-    @test_modules = TestModule.all
+    @test_modules = TestModule.page(params[:page]).per(50)
   end
 
   def show
@@ -11,7 +11,7 @@ class TestModuleController < ApplicationController
       format.html
       format.json
       format.xml
-#      format.mml
+      format.csv {render text: @test_module.to_csv }
     end
   end
 

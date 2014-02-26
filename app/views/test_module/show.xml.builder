@@ -41,7 +41,7 @@ xml.mml('xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
       atributes = Hash.new
       attributes['mmlLb:tecCode'] = @test_module.at0039 if @test_module.at0039.present?
       attributes['mmlLb:tecCodeId'] = @test_module.at0040 if @test_module.at0040.present?
-      xml.mmlLb :technician, attributes, @test_module.at0038 if @test_module.at0038
+      xml.mmlLb :technician, attributes, @test_module.at0038 if @test_module.at0038.present?
       attributes = Hash.new
       attributes['mmlLb:repCodeName'] = @test_module.at0043 if @test_module.at0043.present?
       attributes['mmlLb:repCodeId'] = @test_module.at0045 if @test_module.at0045.present?
@@ -78,7 +78,7 @@ xml.mml('xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
           attributes['mmlLb:out'] = @test_module.at0088 if @test_module.at0088.present?
           xml.mmlLb :numValue, attributes, @test_module.at0070_1 if @test_module.at0070_1.present?
           attributes = Hash.new
-          attributes['mmlLb:uCode'] = @test_module.at0077 if @test_module.at0077.present?
+          attributes['mmlLb:uCode'] = @test_module.at0077 if @test_module.at0077p.present?
           attributes['mmlLb:uCodeId'] = @test_module.at0078 if @test_module.at0078.present?
           xml.mmlLb :unit, attributes, @test_module.at0076_1 if @test_module.at0076_1.present?
           attributes = Hash.new

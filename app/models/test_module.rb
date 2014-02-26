@@ -2,7 +2,9 @@ require 'securerandom'
 class TestModule
   include ActiveModel::Model
 
-#  paginates_per 50
+  def self.page(params)
+    Kaminari.paginate_array(all).page(params)
+  end
 
   def self.create(attributes = {})
     TestModule.new(attributes)
@@ -21,7 +23,7 @@ class TestModule
   def self.build(params)
     TestModule.new(params)
   end
-  
+
   def save
     archetype.rms.inject(archetype.save, :&) {|rm| rm.save}
   end
@@ -1082,6 +1084,67 @@ class TestModule
   def at0088=(at0088)
     at0088model.text_value = at0088
     at0088model.save
+  end
+
+  def to_csv
+<<CSV
+mmlLb:information,#{at0005},#{at0006},#{at0007},#{at0008}
+mmlLb:reportStatus,#{at0010},#{at0011},#{at0012}
+mmlLb:set,#{at0014},#{at0015},#{at0016}
+mmlLb:facility,#{at0018},#{at0019},#{at0020}
+mmlLb:department,#{at0023},#{at0022},#{at0024}
+mmlLb:ward,#{at0026},#{at0027},#{at0028}
+mmlLb:client,#{at0030},#{at0031},#{at0032}
+mmlLb:laboratoryCenter,#{at0034},#{at0035},#{at0036}
+mmlLb:technician,#{at0038},#{at0039},#{at0040}
+mmlLb:repMemo,#{at0042},#{at0043},#{at0044},#{at0045}
+mmlLb:repMemoF,#{at0047}
+mmlLb:laboTest
+mmlLb:specimenName,#{at0051},#{at0052},#{at0053}
+mmlLb:spcMemo,#{at0055},#{at0056},#{at0057},#{at0058}
+mmlLb:spcMemoF,#{at0059}
+mmlLb:item
+mmlLb:itemName,#{at0061_1},#{at0062},#{at0063},#{at0064},#{at0065},#{at0066},#{at0067},#{at0068}
+mmlLb:value,#{at0069}
+mmlLb:numValue,#{at0070_1},#{at0073},#{at0074},#{at0087},#{at0088}
+mmlLb:unit,#{at0076_1},#{at0077},#{at0078}
+mmlLb:referenceInfo,
+mmlLb:itemMemo,#{at0082},#{at0083},#{at0084},#{at0085}
+mmlLb:itemMemoF,#{at0086}
+mmlLb:item
+mmlLb:itemName,#{at0061_2},#{at0062},#{at0063},#{at0064},#{at0065},#{at0066},#{at0067},#{at0068}
+mmlLb:value,#{at0069}
+mmlLb:numValue,#{at0070_2},#{at0073},#{at0074},#{at0087},#{at0088}
+mmlLb:unit,#{at0076_2},#{at0077},#{at0078}
+mmlLb:referenceInfo,
+mmlLb:itemMemo,#{at0082},#{at0083},#{at0084},#{at0085}
+mmlLb:itemMemoF,#{at0086}
+mmlLb:item
+mmlLb:itemName,#{at0061_3},#{at0062},#{at0063},#{at0064},#{at0065},#{at0066},#{at0067},#{at0068}
+mmlLb:value,#{at0069}
+mmlLb:numValue,#{at0070_3},#{at0073},#{at0074},#{at0087},#{at0088}
+mmlLb:unit,#{at0076_3},#{at0077},#{at0078}
+mmlLb:referenceInfo,
+mmlLb:itemMemo,#{at0082},#{at0083},#{at0084},#{at0085}
+mmlLb:itemMemoF,#{at0086}
+mmlLb:item
+mmlLb:itemName,#{at0061_4},#{at0062},#{at0063},#{at0064},#{at0065},#{at0066},#{at0067},#{at0068}
+mmlLb:value,#{at0069}
+mmlLb:numValue,#{at0070_4},#{at0073},#{at0074},#{at0087},#{at0088}
+mmlLb:unit,#{at0076_4},#{at0077},#{at0078}
+mmlLb:referenceInfo,
+mmlLb:itemMemo,#{at0082},#{at0083},#{at0084},#{at0085}
+mmlLb:itemMemoF,#{at0086}
+mmlLb:item
+mmlLb:itemName,#{at0061_5},#{at0062},#{at0063},#{at0064},#{at0065},#{at0066},#{at0067},#{at0068}
+mmlLb:value,#{at0069}
+mmlLb:numValue,#{at0070_5},#{at0073},#{at0074},#{at0087},#{at0088}
+mmlLb:unit,#{at0076_5},#{at0077},#{at0078}
+mmlLb:referenceInfo,
+mmlLb:itemMemo,#{at0082},#{at0083},#{at0084},#{at0085}
+mmlLb:itemMemoF,#{at0086}
+
+CSV
   end
 
   private
