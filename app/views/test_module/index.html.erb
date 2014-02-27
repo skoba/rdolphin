@@ -1,5 +1,5 @@
 <h1>検歴モジュール</h1>
-<%= form_tag({action: 'index'}, method: 'get', remote: true, id: "#items_list") do %>
+<%= form_tag({action: :index}, method: 'get', remote: true, object: @test_modules) do %>
   <%= select_tag 'item_name', options_for_select([['T-Bil', 1],['AST', 2],['ALT', 3],['ALP', 4], ['gGTP', 5]]) %>
   <%= select_tag 'equation', options_for_select(['>','=','<']) %>
   <%= number_field_tag 'value' %>
@@ -12,7 +12,7 @@
       <th>登録ID</th><th>施設</th><th>登録日付</th><th>報告状況</th>
     </tr>
   </thead>
-  <tbody  id="items_list">
+  <tbody id="items_list">
     <%= render partial: "items", object: @test_modules %>
   </tbody>
 </table>

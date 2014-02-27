@@ -3,12 +3,12 @@ class TestModule
   include ActiveModel::Model
 
   def self.page(params)
-    pages = all
+    pages = nil
     if params[:value].blank?
       pages = self.all 
     else
-      params[:path] = "/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.#{params[:item_name]}]/items[at0072]/items[at0070]/value"
-      pages = Archetype.where(archetypeid: 'openEHR-EHR-OBSERVATION.mml_test_module.v1').joins(:rms).where("rms.path = '#{params[:path]}' and rms.num_value #{params[:equation]} #{params[:value]}").to_a.map do |archetype|
+      path = "/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.#{params[:item_name]}]/items[at0072]/items[at0070]/value"
+      pages = Archetype.joins(:rms).where("archetypes.archetypeid = 'openEHR-EHR-OBSERVATION.mml_test_module.v1' and rms.path = '#{path}' and rms.num_value #{params[:equation]} #{params[:value]}").to_a.map do |archetype|
         TestModule.new(archetype: archetype)
       end
     end
@@ -849,7 +849,7 @@ class TestModule
   end
 
   def at0070_3model
-    @at0070_3 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0072]/items[at0070.1]/value')
+    @at0070_3 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.3]/items[at0072]/items[at0070]/value')
   end
 
   def at0070_3
@@ -862,7 +862,7 @@ class TestModule
   end
 
   def at0070_4model
-    @at0070_4 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.4]/items[at0072]/items[at0070.1]/value')
+    @at0070_4 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.4]/items[at0072]/items[at0070]/value')
   end
 
   def at0070_4
@@ -875,7 +875,7 @@ class TestModule
   end
 
   def at0070_5model
-    @at0070_5 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0072]/items[at0070.1]/value')
+    @at0070_5 ||= conpath('at0070', '/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0060.5]/items[at0072]/items[at0070]/value')
   end
 
   def at0070_5
