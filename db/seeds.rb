@@ -5,4 +5,4 @@ require 'factory_girl'
 Archetype.delete_all
 Rm.delete_all
 
-FactoryGirl.create_list(:test_module, 1000_000)
+FactoryGirl.create_list(:test_module, 10_000)

@@ -1,5 +1,5 @@
 Rdolphin::Application.configure do
-  config.log_level = :warn
+  config.log_level = :debug
   config.cache_classes = false
   config.eager_load = false
 
