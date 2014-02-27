@@ -1,5 +1,5 @@
 <h1>検歴モジュール</h1>
-<%= form_tag({action: :index}, method: 'get', remote: true, object: @test_modules) do %>
+<%= form_tag(url_for(action: :index), method: 'get') do %>
   <%= select_tag 'item_name', options_for_select([['T-Bil', 1],['AST', 2],['ALT', 3],['ALP', 4], ['gGTP', 5]]) %>
   <%= select_tag 'equation', options_for_select(['>','=','<']) %>
   <%= number_field_tag 'value' %>
@@ -16,5 +16,5 @@
     <%= render partial: "items", object: @test_modules %>
   </tbody>
 </table>
-<%= paginate @test_modules, remote: true %>
+<%= paginate @test_modules %>
 
