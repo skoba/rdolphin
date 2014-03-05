@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.1'
 
 gem 'rails', '~> 4.0'
 gem 'pg'
@@ -9,10 +10,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-gem 'jquery-rails'
 gem 'turbolinks'
-
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
+gem 'devise'
 gem 'jbuilder', '~> 1.2'
+gem 'rails_12factor'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -35,7 +39,9 @@ gem 'kaminari'
 gem 'mml-ruby'
 gem 'openehr'
 gem 'openehr-rails'
-
+group :development do
+  gem 'rails_layout'
+end
 
 group :development, :test do
   gem 'rspec'

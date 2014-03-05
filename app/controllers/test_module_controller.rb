@@ -1,11 +1,12 @@
 class TestModuleController < ApplicationController
   before_action :set_test_module, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @test_modules = TestModule.page(params).per(10)
     respond_to do |format|
       format.html
-      format.js if request.xhr?
+#      format.js if request.xhr? #{ render partial: 'items' } if request.xhr?
     end
   end
 

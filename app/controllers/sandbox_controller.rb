@@ -11,9 +11,10 @@ class SandboxController < ApplicationController
   end
 
   def show
-
+#    render format.js if xhr
   end
 
   def new
+
   end
 end

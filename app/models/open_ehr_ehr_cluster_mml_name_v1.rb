@@ -3,6 +3,8 @@ class OpenEhrEhrClusterMmlNameV1
   include ActiveModel::Model
 
   validates :at0001, :at0002, :at0003, presence: true
+  define_model_callbacks :save
+  before_save { self.valid? }
 
   def self.create(attributes = {})
     OpenEhrEhrClusterMmlNameV1.new(attributes)
