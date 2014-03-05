@@ -43,12 +43,13 @@ group :development do
   gem 'rails_layout'
 end
 
+gem 'factory_girl_rails'
+gem 'forgery'
+
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
   gem 'cucumber'
-  gem 'factory_girl_rails'
-  gem 'forgery'
 end
