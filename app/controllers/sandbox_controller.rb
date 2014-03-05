@@ -11,7 +11,7 @@ class SandboxController < ApplicationController
   end
 
   def show
-#    render format.js if xhr
+    render partial: "symptom" if xhr
   end
 
   def new
