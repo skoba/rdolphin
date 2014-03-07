@@ -1100,6 +1100,7 @@ class TestModule
 
   def to_csv
 <<CSV
+mmlLb:TestModule
 mmlLb:information,#{at0005},#{at0006},#{at0007},#{at0008}
 mmlLb:reportStatus,#{at0010},#{at0011},#{at0012}
 mmlLb:set,#{at0014},#{at0015},#{at0016}
