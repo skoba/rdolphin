@@ -1,5 +1,7 @@
-<% form_for @blood_pressure do |f| %>
+<span class= 'badge'>Blood Pressure</span>
+<%= form_for @blood_pressure, url: 'sandbox/new', remote: true do |f| %>
 <div class="field">
-  収縮期血圧：f.text_field
+ SBP: <%= f.text_field :at0003 %> mmHg<br>
+ DBP: <%= f.text_field :at0004 %> mmHg<br>
 </div>
 <% end %>

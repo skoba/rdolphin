@@ -1,5 +1,5 @@
 class SandboxController < ApplicationController
-  before_action :authenticate_user!
+#  before_action :authenticate_user!
 
   def index
     respond_to do |format|
@@ -11,10 +11,15 @@ class SandboxController < ApplicationController
   end
 
   def show
-    render partial: "symptom" if xhr
+
   end
 
   def new
-
+    @blood_pressure = BloodPressure.new
+    @symptom = Symptom.new
+    @pulse_rate = PulseRate.new
+    if request.xhr?
+      render partial: params["form"]
+    end
   end
 end

@@ -1,12 +1,6 @@
-<table width="" cellspacing="" cellpadding="" border="">
-  <thead>
-    <tr>
-      <th>Description</th><th>Site</th><th>Intensity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>頭痛</td>
-    </tr>
-  </tbody>
-</table>
+<span class= 'badge'>Symptom</span>
+<%= form_for @symptom, url: 'sandbox/new',remote: true do |f| %>
+<div class="field">
+ Description: <%= f.text_field :at0004 %>
+</div>
+<% end %>
