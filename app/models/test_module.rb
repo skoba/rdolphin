@@ -1,7 +1,7 @@
 require 'securerandom'
 class TestModule
   include ActiveModel::Model
-  validate :at0070_1, :at0070_2, precense: true
+  validate :at0070_1, :at0070_2, presense: true
   define_model_callbacks :save
   before_save { self.valid? }
   

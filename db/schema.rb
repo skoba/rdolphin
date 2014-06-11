@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611143758) do
+ActiveRecord::Schema.define(version: 20140611173342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20140611143758) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ehrs", force: true do |t|
+    t.string   "ehr_id"
+    t.boolean  "queryable"
+    t.boolean  "modifiable"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ehrs", ["person_id"], name: "index_ehrs_on_person_id", using: :btree
 
   create_table "identifiers", force: true do |t|
     t.string   "issuer",     null: false

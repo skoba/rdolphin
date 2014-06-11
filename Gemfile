@@ -38,17 +38,15 @@ gem 'kaminari'
 #gem 'twitter-bootstrap-kaminari-views'
 gem 'mml-ruby'
 
-group :development do
-  gem 'rails_layout'
-end
 group :test do
-  gem 'factory_girl_rails'
-  gem 'forgery'
   gem 'database_cleaner'
   gem 'launchy'
 end
 
 group :development, :test do
+  gem 'forgery'
+  gem 'factory_girl_rails'
+  gem 'rails_layout'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
