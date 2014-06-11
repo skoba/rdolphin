@@ -11,14 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304063550) do
+ActiveRecord::Schema.define(version: 20140611143758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: true do |t|
+    t.string   "post_code"
+    t.string   "address_type",          null: false
+    t.string   "unstructured"
+    t.string   "unstructured_syllabic"
+    t.string   "prefecture"
+    t.string   "prefecture_code"
+    t.string   "state"
+    t.string   "city"
+    t.string   "city_syllabic"
+    t.string   "town"
+    t.string   "town_syllabic"
+    t.string   "property_number"
+    t.date     "valid_from"
+    t.date     "valid_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+  end
+
+  add_index "addresses", ["person_id"], name: "index_addresses_on_person_id", using: :btree
+
   create_table "archetypes", force: true do |t|
     t.string   "archetypeid"
     t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "identifiers", force: true do |t|
+    t.string   "issuer",     null: false
+    t.string   "identity",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+  end
+
+  add_index "identifiers", ["person_id"], name: "index_identifiers_on_person_id", using: :btree
+
+  create_table "people", force: true do |t|
+    t.string   "first_name",        null: false
+    t.string   "given_name",        null: false
+    t.string   "middle_nale"
+    t.string   "unstructured_name"
+    t.date     "date_of_birth",     null: false
+    t.string   "gender",            null: false
+    t.string   "prefix"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,6 +81,21 @@ ActiveRecord::Schema.define(version: 20140304063550) do
   end
 
   add_index "rms", ["archetype_id"], name: "index_rms_on_archetype_id", using: :btree
+
+  create_table "telecoms", force: true do |t|
+    t.string   "telecom_type",  null: false
+    t.string   "unstructured"
+    t.string   "country_code"
+    t.string   "area_code"
+    t.string   "number"
+    t.string   "extension"
+    t.string   "email_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+  end
+
+  add_index "telecoms", ["person_id"], name: "index_telecoms_on_person_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
