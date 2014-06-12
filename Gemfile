@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+#ruby '2.1.1'
 
 gem 'rails' #, '~> 4.1'
 gem 'pg'
@@ -54,4 +54,6 @@ group :development, :test do
   gem 'cucumber'
   gem 'ffaker'
   gem 'rspec-collection_matchers'
+  gem 'guard-spring'
 end
+gem "spring-commands-rspec", group: :development
