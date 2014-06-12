@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611173342) do
+ActiveRecord::Schema.define(version: 20140612194939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,15 +38,41 @@ ActiveRecord::Schema.define(version: 20140611173342) do
 
   add_index "addresses", ["person_id"], name: "index_addresses_on_person_id", using: :btree
 
-  create_table "archetypes", force: true do |t|
-    t.string   "archetypeid"
-    t.string   "uid"
+  create_table "compositions", force: true do |t|
+    t.integer  "ehr_id"
+    t.string   "uid",          null: false
+    t.string   "category",     null: false
+    t.datetime "start_time"
+    t.string   "archetype_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "compositions", ["ehr_id"], name: "index_compositions_on_ehr_id", using: :btree
+  add_index "compositions", ["uid"], name: "index_compositions_on_uid", unique: true, using: :btree
+
+  create_table "content_items", force: true do |t|
+    t.integer  "composition_id"
+    t.string   "rm_type_name",   null: false
+    t.string   "archetype_id",   null: false
+    t.string   "name"
+    t.string   "path",           null: false
+    t.string   "node_id"
+    t.string   "txt_data"
+    t.float    "num_value"
+    t.integer  "int_value"
+    t.boolean  "bool_value"
+    t.datetime "datetime_value"
+    t.date     "date_value"
+    t.time     "time_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
+
   create_table "ehrs", force: true do |t|
-    t.string   "ehr_id"
+    t.string   "ehr_id",     null: false
     t.boolean  "queryable"
     t.boolean  "modifiable"
     t.integer  "person_id"
@@ -54,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140611173342) do
     t.datetime "updated_at"
   end
 
+  add_index "ehrs", ["ehr_id"], name: "index_ehrs_on_ehr_id", unique: true, using: :btree
   add_index "ehrs", ["person_id"], name: "index_ehrs_on_person_id", using: :btree
 
   create_table "identifiers", force: true do |t|
@@ -77,21 +104,6 @@ ActiveRecord::Schema.define(version: 20140611173342) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "rms", force: true do |t|
-    t.string   "node_id"
-    t.string   "path"
-    t.integer  "archetype_id"
-    t.string   "text_value"
-    t.float    "num_value"
-    t.date     "date_value"
-    t.time     "time_value"
-    t.boolean  "bool_value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rms", ["archetype_id"], name: "index_rms_on_archetype_id", using: :btree
 
   create_table "telecoms", force: true do |t|
     t.string   "telecom_type",  null: false

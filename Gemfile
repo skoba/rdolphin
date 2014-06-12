@@ -53,7 +53,9 @@ group :development, :test do
   gem 'poltergeist'
   gem 'cucumber'
   gem 'ffaker'
+  gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem 'guard-spring'
 end
+
 gem "spring-commands-rspec", group: :development
