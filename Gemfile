@@ -53,5 +53,6 @@ group :development, :test do
   gem 'poltergeist'
   gem 'cucumber'
   gem 'ffaker'
+  gem 'shoulda'
   gem 'rspec-collection_matchers'
 end
