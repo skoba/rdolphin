@@ -1,8 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :content_item do
-    rm_type_name "DV_TEXT"
+    rm_type_name "DV_QUANTITY"
     archetype_id "openEHR-EHR-OBSERVATION-blood_pressure.v1"
     name "Systolic blood pressure"
     path "/[at0001]/openEHR-EHR-OBSERVATION-blood_pressure.v1/value"
