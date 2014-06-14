@@ -1,4 +1,8 @@
 Rdolphin::Application.routes.draw do
+  get 'ehr/index'
+
+  get 'ehr/show'
+
   get "home/index"
   devise_for :users
   resources :test_module
