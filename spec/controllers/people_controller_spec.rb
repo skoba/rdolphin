@@ -19,7 +19,7 @@ RSpec.describe PeopleController, :type => :controller do
   end
 
   describe "GET 'show'" do
-    let (:person) { create :person }
+    let(:person) { create :person }
 
     it "returns http success" do
       get 'show', id: person
