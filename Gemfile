@@ -26,6 +26,7 @@ end
 
 gem 'bcrypt-ruby' #, '~> 3.0'
 gem 'unicorn'
+gem 'pry-rails', group: :development
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
