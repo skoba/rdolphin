@@ -1,7 +1,11 @@
 Rdolphin::Application.routes.draw do
-  get 'ehr/index'
+  get 'people/index'
 
-  get 'ehr/show'
+  get 'people/show'
+
+  get 'ehrs/index'
+
+  get 'ehrs/show'
 
   get "home/index"
   devise_for :users
