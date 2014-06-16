@@ -1,2 +1,24 @@
-<h1>People#index</h1>
-<p>Find me in app/views/people/index.html.erb</p>
+<h1>登録者リスト</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th><th>姓</th><th>名</th><th>生年月日</th><th>性別</th><th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.id %></td>
+        <td><%= person.family_name %></td>
+        <td><%= person.given_name %></td>
+        <td><%= person.date_of_birth %></td>
+        <td><%= person.gender %></td>
+        <td><%= link_to 'Show', person %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -125,6 +125,7 @@ GEM
       nokogiri
     multi_json (1.10.1)
     multi_test (0.1.1)
+    mysql2 (0.3.16)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -222,6 +223,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sqlite3 (1.3.9)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -268,6 +270,7 @@ DEPENDENCIES
   kaminari
   launchy
   mml-ruby
+  mysql2
   pg
   poltergeist
   pry-rails
@@ -283,6 +286,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sprockets
+  sqlite3
   turbolinks
   uglifier
   unicorn

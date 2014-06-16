@@ -1,3 +1,4 @@
+## sqlite3
 # development:
 #   adapter: sqlite3
 #   database: db/development.sqlite3
@@ -16,23 +17,19 @@
 #   pool: 5
 #   timeout: 5000
 
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: rdolphin_development
+#   pool: 50
+#   username: postgres
 
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: rdolphin_development
-  pool: 50
-  username: postgres
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test: &test
-  adapter: postgresql
-  encoding: unicode
-  database: rdolphin_test
-  pool: 10
-  username: postgres
+# test: &test
+#   adapter: postgresql
+#   encoding: unicode
+#   database: rdolphin_test
+#   pool: 10
+#   username: postgres
 
 production:
   adapter: postgresql
@@ -41,5 +38,25 @@ production:
   pool: 10
   username: postgres
 
-# cucumber:
-#   <<: *test
+## MySQL
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: railsapp
+  password: redruby
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: rdolphin_development
+
+test:
+  <<: *default
+  database: rdolphin_test
+
+production:
+  <<: *default
+  database: rdolphin_production
+  # username: railsapp
+  # password: <%= ENV['RAILSTEST_DATABASE_PASSWORD'] %>

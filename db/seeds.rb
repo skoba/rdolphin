@@ -70,7 +70,7 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  factory :vital_sign_composition, class: Composition do
+  factory :vitalsign_composition, class: Composition do
     uid { SecureRandom.uuid }
     category "persistent"
     start_time "2014-06-13 02:05:42"
@@ -89,8 +89,8 @@ FactoryGirl.define do
     queryable true
     modifiable false
     after(:create) do |ehr|
-      100.times do
-        ehr.compositions << create(:vital_sign_composition, ehr: ehr)
+      10.times do
+        ehr.compositions << create(:vitalsign_composition, ehr: ehr)
       end
     end
   end
@@ -111,6 +111,6 @@ FactoryGirl.define do
   end
 end
 
-100.times do
+1000.times do
   FactoryGirl.create :dummy_person
 end
