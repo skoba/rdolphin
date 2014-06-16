@@ -11,8 +11,8 @@
     <% @people.each do |person| %>
       <tr>
         <td><%= person.id %></td>
+        <td><%= person.family_name %></td>
         <td><%= person.given_name %></td>
-        <td><%= person.first_name %></td>
         <td><%= person.date_of_birth %></td>
         <td><%= person.gender %></td>
         <td><%= link_to '表示', person %></td>
