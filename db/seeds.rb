@@ -89,7 +89,7 @@ FactoryGirl.define do
     queryable true
     modifiable false
     after(:create) do |ehr|
-      10.times do
+      1000.times do
         ehr.compositions << create(:vitalsign_composition, ehr: ehr)
       end
     end
@@ -98,8 +98,8 @@ end
 
 FactoryGirl.define do
   factory :dummy_person, class: Person do
-    first_name { Faker::NameJA.first_name }
-    given_name { Faker::NameJA.last_name }
+    family_name { Faker::NameJA.last_name }
+    given_name { Faker::NameJA.first_name }
     date_of_birth { Faker::Time.date(year_range: 100)[0,10] }
     gender { Faker::Identification.gender }
     after(:create) do |dummy_person|
