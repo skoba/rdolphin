@@ -4,5 +4,5 @@ class Person < ActiveRecord::Base
   has_many :telecoms
   has_many :ehrs
 
-  validates_presence_of :first_name, :given_name, :date_of_birth, :gender
+  validates_presence_of :family_name, :given_name, :date_of_birth, :gender
 end

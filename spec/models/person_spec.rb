@@ -8,8 +8,8 @@ RSpec.describe Person, :type => :model do
   end
 
   it 'is invalid without first_name' do
-    person.first_name = nil
-    expect(person).to have(1).error_on(:first_name)
+    person.family_name = nil
+    expect(person).to have(1).error_on(:family_name)
   end
 
   it 'is invalid without given_name' do

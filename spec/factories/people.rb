@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :person do
-    first_name "Shinji"
-    given_name "KOBAYASHI"
+    given_name "Shinji"
+    family_name "KOBAYASHI"
     unstructured_name "Shinji KOBAYASHI"
     date_of_birth "1970-04-19"
     gender "Male"

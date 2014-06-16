@@ -1,2 +1,20 @@
-<h1>People#show</h1>
-<p>Find me in app/views/people/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row">
+  <div class="col-md-2">ID</div>
+  <div class="col-md-2">姓</div>
+  <div class="col-md-2">名</div>
+  <div class="col-md-4">生年月日</div>
+  <div class="col-md-2">性別</div>
+</div>
+<div class="row">
+  <div class="col-md-2"><%= @person.id %></div>
+  <div class="col-md-2"><%= @person.family_name %></div>
+  <div class="col-md-2"><%= @person.given_name %></div>
+  <div class="col-md-4"><%= @person.date_of_birth %></div>
+  <div class="col-md-2"><%= @person.gender %></div>
+</div>
+</div>
+
+
+

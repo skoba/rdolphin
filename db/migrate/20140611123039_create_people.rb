@@ -1,7 +1,7 @@
 class CreatePeople < ActiveRecord::Migration
   def change
     create_table :people do |t|
-      t.string :first_name, null: false
+      t.string :family_name, null: false
       t.string :given_name, null: false
       t.string :middle_nale
       t.string :unstructured_name
