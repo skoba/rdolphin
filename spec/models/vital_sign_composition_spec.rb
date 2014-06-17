@@ -19,10 +19,14 @@ RSpec.describe VitalSignComposition, :type => :model do
   end
 
   describe 'attributes' do
-    let (:vital_sign_composition) { build :vital_sign_composition }
+    let (:vital_sign_composition) { create :vital_sign_composition }
 
     it 'archetype_id is openEHR-EHR-COMPOSITION-report-vital_sign.v1' do
       expect(vital_sign_composition.archetype_id).to eq 'openEHR-EHR-COMPOSITION-report-vital_sign.v1'
+    end
+
+    it 'systolic_blood_pressure is 120' do
+      expect(vital_sign_composition.systolic_blood_pressure).to eq 120
     end
   end
 end

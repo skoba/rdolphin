@@ -39,9 +39,9 @@ end
 FactoryGirl.define do
   factory :systolic_blood_pressure, class: ContentItem do
     rm_type_name "DV_QUANTITY"
-    archetype_id "openEHR-EHR-OBSERVATION-blood_pressure.v1"
+    archetype_id "openEHR-EHR-OBSERVATION.blood_pressure.v1"
     name "Systolic blood pressure"
-    path "/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION-blood_pressure.v1/data[at0001]/events[at0006]/data[at0003]/items[at0004]"
+    path "/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0004]"
     node_id "at0004"
     num_value { rand(100..200)}
   end
@@ -50,9 +50,9 @@ end
 FactoryGirl.define do
   factory :diastolic_blood_pressure, class: ContentItem do
     rm_type_name "DV_QUANTITY"
-    archetype_id "openEHR-EHR-OBSERVATION-blood_pressure.v1"
-    name "Systolic blood pressure"
-    path "/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION-blood_pressure.v1/data[at0001]/events[at0006]/data[at0003]/items[at0005]"
+    archetype_id "openEHR-EHR-OBSERVATION.blood_pressure.v1"
+    name "Diastolic blood pressure"
+    path "/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0005]"
     node_id "at0005"
     num_value { rand(40..99) }
   end
@@ -61,24 +61,24 @@ end
 FactoryGirl.define do
   factory :pulse_rate, class: ContentItem do
     rm_type_name "DV_QUANTITY"
-    archetype_id "openEHR-EHR-OBSERVATION-pulse_rate.v1"
+    archetype_id "openEHR-EHR-OBSERVATION.pulse.v1"
     name "Pulse rate"
-    path "/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION-pulse.v1/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
+    path "/content[openEHR-EHR-SECTION.vital_signs.v1]/items[openEHR-EHR-OBSERVATION.pulse.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
     node_id "at0004"
     num_value { rand(50..120) }
   end
 end
 
 FactoryGirl.define do
-  factory :vitalsign_composition, class: Composition do
+  factory :vitalsign_composition, class: VitalSignComposition do
     uid { SecureRandom.uuid }
     category "persistent"
     start_time "2014-06-13 02:05:42"
     archetype_id "openEHR-EHR-COMPOSITION-vital_sign.v1"
     after(:create) do |vs|
-      vs.content_items << create(:systolic_blood_pressure, composition: vs)
-      vs.content_items << create(:diastolic_blood_pressure, composition: vs)
-      vs.content_items << create(:pulse_rate, composition: vs)
+      vs.content_items << create(:systolic_blood_pressure)
+      vs.content_items << create(:diastolic_blood_pressure)
+      vs.content_items << create(:pulse_rate)
     end
   end
 end
@@ -89,7 +89,7 @@ FactoryGirl.define do
     queryable true
     modifiable false
     after(:create) do |ehr|
-      10.times do
+      100.times do
         ehr.compositions << create(:vitalsign_composition, ehr: ehr)
       end
     end
@@ -111,6 +111,6 @@ FactoryGirl.define do
   end
 end
 
-10.times do
+100.times do
   FactoryGirl.create :dummy_person
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Person, :type => :model do
-  let(:person) {build :person}
+  let(:person) {create :person}
 
   it 'is valid with all' do
     expect(person).to be_valid

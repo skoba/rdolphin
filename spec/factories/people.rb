@@ -6,15 +6,15 @@ FactoryGirl.define do
     date_of_birth "1970-04-19"
     gender "Male"
     prefix "Dr"
-    after(:build) do |person|
-      person.addresses << build(:address)
+    after(:create) do |person|
+      person.addresses << create(:address)
       [:local_identifier, :maiko_identifier].each do |identifier|
-        person.identifiers << build(identifier)
+        person.identifiers << create(identifier)
       end
       [:home_telecom, :business_telecom, :mobile_telecom].each do |telecom|
-        person.telecoms << build(telecom)
+        person.telecoms << create(telecom)
       end
-      person.ehrs << build(:ehr)
+      person.ehrs << create(:concrete_ehr)
     end
   end
 end

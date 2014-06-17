@@ -5,12 +5,12 @@ FactoryGirl.define do
     modifiable false
   end
 
-  factory :concrete_ehr do
+  factory :concrete_ehr, class: Ehr do
     ehr_id { SecureRandom.uuid }
     queryable true
     modifiable false
     after(:build) do |ehr|
-      ehr.compositions << build(:composition)
+      ehr.compositions << build(:concrete_composition)
     end
   end
 end
