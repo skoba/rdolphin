@@ -1,8 +1,16 @@
 FactoryGirl.define do
-  factory :ehr do
+  factory :ehr, class: Ehr do
     ehr_id { SecureRandom.uuid }
     queryable true
     modifiable false
-    person
+  end
+
+  factory :concrete_ehr do
+    ehr_id { SecureRandom.uuid }
+    queryable true
+    modifiable false
+    after(:build) do |ehr|
+      ehr.compositions << build(:composition)
+    end
   end
 end

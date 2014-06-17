@@ -1,5 +1,6 @@
-RSpec.describe Composition, :type => :model do
+RSpec.describe Composition, :type =>:model do
   it {is_expected.to belong_to :ehr}
+  it {is_expected.to have_many :content_items}
 
   it 'is not valid with empty ehr_id' do
     expect(build :composition, ehr_id: nil).to have(1).error_on(:ehr_id)

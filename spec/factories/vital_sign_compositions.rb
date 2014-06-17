@@ -5,7 +5,7 @@ FactoryGirl.define do
     uid { SecureRandom.uuid }
     category "persistent"
     start_time { Faker::Time.date }
-#    archetype_id "openEHR-EHR-COMPOSITION-Report-vital_sign.v1"
     ehr
+    #    archetype_id "openEHR-EHR-COMPOSITION-Report-vital_sign.v1"
   end
 end

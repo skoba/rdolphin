@@ -1,0 +1,16 @@
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>記録名称</th><th>日時</th><th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @compositions.each do |composition| %>
+    <tr>
+      <td>バイタルサイン</td>
+      <td><%= composition.start_time %></td>
+      <td><%= link_to '表示', composition %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

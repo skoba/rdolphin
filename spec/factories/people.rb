@@ -14,6 +14,7 @@ FactoryGirl.define do
       [:home_telecom, :business_telecom, :mobile_telecom].each do |telecom|
         person.telecoms << build(telecom)
       end
+      person.ehrs << build(:ehr)
     end
   end
 end

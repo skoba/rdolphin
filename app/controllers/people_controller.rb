@@ -6,6 +6,7 @@ class PeopleController < ApplicationController
   end
 
   def show
+    @compositions = @person.ehrs.first.compositions
   end
 
   private
@@ -14,6 +15,6 @@ class PeopleController < ApplicationController
     end
 
     def person_params
-      params.require(:person).permit(:first_name, :given_name, :middle_name, :unstructured_name, :date_of_birth, :gender, :prefix)
+      params.require(:person).permit(:family_name, :given_name, :middle_name, :unstructured_name, :date_of_birth, :gender, :prefix)
     end
 end
