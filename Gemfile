@@ -44,17 +44,17 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
 end
+gem 'factory_girl_rails'
+gem 'ffaker'
 
 group :development, :test do
   gem 'forgery'
-  gem 'factory_girl_rails'
   gem 'rails_layout'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
   gem 'cucumber'
-  gem 'ffaker'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem 'guard-spring'
