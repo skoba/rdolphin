@@ -89,7 +89,7 @@ FactoryGirl.define do
     queryable true
     modifiable false
     after(:create) do |ehr|
-      100.times do
+      20.times do
         ehr.compositions << create(:vitalsign_composition, ehr: ehr)
       end
     end
@@ -111,6 +111,6 @@ FactoryGirl.define do
   end
 end
 
-100.times do
+20.times do
   FactoryGirl.create :dummy_person
 end
