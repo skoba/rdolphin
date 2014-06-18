@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 gem 'rails' #, '~> 4.1'
 gem 'pg'
-gem 'sqlite3'
-gem 'mysql2'
+gem 'sqlite3', group: [:development]
+gem 'mysql2', group: [:development]
 gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'uglifier' #, '>= 1.3.0'
@@ -59,5 +59,5 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'guard-spring'
 end
-
+gem 'rails-erd', group: :development
 gem "spring-commands-rspec", group: :development

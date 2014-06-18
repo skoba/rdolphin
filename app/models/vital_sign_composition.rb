@@ -15,4 +15,8 @@ class VitalSignComposition < Composition
   def pulse_rate
     self.content_items.where(archetype_id: 'openEHR-EHR-OBSERVATION.pulse.v1', node_id: 'at0004').first.num_value
   end
+
+  def to_csv
+    "#{self.systolic_blood_pressure},#{self.diastolic_blood_pressure},#{self.pulse_rate}\n"
+  end
 end

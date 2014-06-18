@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140612194939) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: true do |t|
     t.string   "post_code"
     t.string   "address_type",          null: false
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140612194939) do
     t.integer  "person_id"
   end
 
-  add_index "addresses", ["person_id"], name: "index_addresses_on_person_id"
+  add_index "addresses", ["person_id"], name: "index_addresses_on_person_id", using: :btree
 
   create_table "compositions", force: true do |t|
     t.integer  "ehr_id"
@@ -45,8 +48,8 @@ ActiveRecord::Schema.define(version: 20140612194939) do
     t.datetime "updated_at"
   end
 
-  add_index "compositions", ["ehr_id"], name: "index_compositions_on_ehr_id"
-  add_index "compositions", ["uid"], name: "index_compositions_on_uid", unique: true
+  add_index "compositions", ["ehr_id"], name: "index_compositions_on_ehr_id", using: :btree
+  add_index "compositions", ["uid"], name: "index_compositions_on_uid", unique: true, using: :btree
 
   create_table "content_items", force: true do |t|
     t.integer  "composition_id"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20140612194939) do
     t.datetime "updated_at"
   end
 
-  add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id"
+  add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
 
   create_table "ehrs", force: true do |t|
     t.string   "ehr_id",     null: false
@@ -77,8 +80,8 @@ ActiveRecord::Schema.define(version: 20140612194939) do
     t.datetime "updated_at"
   end
 
-  add_index "ehrs", ["ehr_id"], name: "index_ehrs_on_ehr_id", unique: true
-  add_index "ehrs", ["person_id"], name: "index_ehrs_on_person_id"
+  add_index "ehrs", ["ehr_id"], name: "index_ehrs_on_ehr_id", unique: true, using: :btree
+  add_index "ehrs", ["person_id"], name: "index_ehrs_on_person_id", using: :btree
 
   create_table "identifiers", force: true do |t|
     t.string   "issuer",     null: false
@@ -88,7 +91,7 @@ ActiveRecord::Schema.define(version: 20140612194939) do
     t.integer  "person_id"
   end
 
-  add_index "identifiers", ["person_id"], name: "index_identifiers_on_person_id"
+  add_index "identifiers", ["person_id"], name: "index_identifiers_on_person_id", using: :btree
 
   create_table "people", force: true do |t|
     t.string   "family_name",       null: false
@@ -115,7 +118,7 @@ ActiveRecord::Schema.define(version: 20140612194939) do
     t.integer  "person_id"
   end
 
-  add_index "telecoms", ["person_id"], name: "index_telecoms_on_person_id"
+  add_index "telecoms", ["person_id"], name: "index_telecoms_on_person_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -132,7 +135,7 @@ ActiveRecord::Schema.define(version: 20140612194939) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

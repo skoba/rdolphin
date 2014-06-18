@@ -11,5 +11,6 @@
     </tr>
   </tbody>
 </table>
-<%= link_to 'XML', person_compositions_show_path(@composition, format: :xml) %> | <%= link_to 'JSON', person_compositions_show_path(@composition, format: :json) %> | <%= link_to 'CSV', person_compositions_show_path(@composition, format: :csv) %> |<%= link_to '戻る', person_path(@composition.ehr.person) %>
+<%= link_to 'XML', person_compositions_show_path(id: @composition.id, format: :xml) %> | <%= link_to 'JSON', person_compositions_show_path(id: @composition.id, format: :json) %> | <%= link_to 'CSV', person_compositions_show_path(id: @composition, format: :csv) %> |<%= link_to '戻る', person_path(@composition.ehr.person) %>
+
 
