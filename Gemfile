@@ -46,9 +46,9 @@ group :test do
 end
 gem 'factory_girl_rails'
 gem 'ffaker'
+gem 'forgery'
 
 group :development, :test do
-  gem 'forgery'
   gem 'rails_layout'
   gem 'rspec'
   gem 'rspec-rails'
