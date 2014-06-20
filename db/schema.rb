@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620155610) do
+ActiveRecord::Schema.define(version: 20140620165231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140620155610) do
     t.string   "name"
     t.string   "path",           null: false
     t.string   "node_id"
-    t.string   "txt_data"
+    t.string   "txt_value"
     t.float    "num_value"
     t.integer  "int_value"
     t.boolean  "bool_value"

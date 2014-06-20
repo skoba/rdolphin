@@ -1,0 +1,3 @@
+class DvText < ContentItem
+  
+end
