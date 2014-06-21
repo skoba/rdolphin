@@ -5,6 +5,6 @@ FactoryGirl.define do
     name "Systolic blood pressure"
     path "/items[at0002]/value"
     node_id "at0002"
-    txt_value 120
+    txt_value 'headache'
   end
 end
