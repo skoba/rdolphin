@@ -1,4 +1,8 @@
 Rdolphin::Application.routes.draw do
+  get 'prescriptions/index'
+
+  get 'prescriptions/show'
+
   resources :people, only: [:show, :index] do
     get 'compositions/show'
   end
