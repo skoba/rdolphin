@@ -6,5 +6,6 @@ FactoryGirl.define do
     path "/items[at0003]/value"
     node_id "at0003"
     num_value 120
+    unit 'mmHg'
   end
 end

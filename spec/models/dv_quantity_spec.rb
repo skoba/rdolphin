@@ -11,6 +11,10 @@ RSpec.describe DvQuantity, type: :model do
     expect(dv_quantity.num_value).to eq 120
   end
 
+  it 'unit is mmHg' do
+    expect(dv_quantity.unit).to eq 'mmHg'
+  end
+
   it 'is invalid without num_value' do
     dv_quantity.num_value = nil
     expect(dv_quantity).not_to be_valid

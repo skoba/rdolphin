@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620165231) do
+ActiveRecord::Schema.define(version: 20140623031618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140620165231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "code"
+    t.text     "unit"
   end
 
   add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
