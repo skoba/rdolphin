@@ -1,0 +1,2 @@
+class Prescription < Composition
+end
