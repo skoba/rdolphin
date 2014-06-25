@@ -2,13 +2,13 @@
 <table width="" cellspacing="" cellpadding="" border="">
   <thead>
     <tr>
-      <th>処方ID</th><th>処方日</th>
+      <th>処方ID</th><th>処方日</th><th></th>
     </tr>
   </thead>
   <tbody>
 <%= @prescriptions.each do |prescription| %>
     <tr>
-      <td><%= prescription.uid %></td><td><%= prescription.start_time %></td>
+      <td><%= prescription.uid %></td><td><%= prescription.start_time %></td><td></td>
     </tr>
 <% end %>
   </tbody>

@@ -1,7 +1,7 @@
-class Person < ActiveRecord::Base
-  has_many :addresses
-  has_many :identifiers
-  has_many :telecoms
+class Person < Party
+  has_many :addresses, as: :party
+  has_many :identifiers, as: :party
+  has_many :telecoms, as: :party
   has_many :ehrs
 
   validates_presence_of :family_name, :given_name, :date_of_birth, :gender

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623031618) do
+ActiveRecord::Schema.define(version: 20140625150448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,11 @@ ActiveRecord::Schema.define(version: 20140623031618) do
     t.date     "valid_to"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "person_id"
+    t.integer  "party_id"
+    t.string   "party_type"
   end
 
-  add_index "addresses", ["person_id"], name: "index_addresses_on_person_id", using: :btree
+  add_index "addresses", ["party_id", "party_type"], name: "index_addresses_on_party_id_and_party_type", using: :btree
 
   create_table "compositions", force: true do |t|
     t.integer  "ehr_id"
@@ -90,10 +91,27 @@ ActiveRecord::Schema.define(version: 20140623031618) do
     t.string   "identity",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "person_id"
+    t.integer  "party_id"
+    t.string   "party_type"
   end
 
-  add_index "identifiers", ["person_id"], name: "index_identifiers_on_person_id", using: :btree
+  add_index "identifiers", ["party_id", "party_type"], name: "index_identifiers_on_party_id_and_party_type", using: :btree
+
+  create_table "parties", force: true do |t|
+    t.string   "type"
+    t.integer  "identifiers_id"
+    t.integer  "addresses_id"
+    t.integer  "telecoms_id"
+    t.string   "family_name"
+    t.string   "given_name"
+    t.string   "middle_name"
+    t.string   "unstructured_name"
+    t.date     "date_of_birth"
+    t.string   "gender"
+    t.string   "prefix"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "people", force: true do |t|
     t.string   "family_name",       null: false
@@ -117,10 +135,11 @@ ActiveRecord::Schema.define(version: 20140623031618) do
     t.string   "email_address"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "person_id"
+    t.integer  "party_id"
+    t.string   "party_type"
   end
 
-  add_index "telecoms", ["person_id"], name: "index_telecoms_on_person_id", using: :btree
+  add_index "telecoms", ["party_id", "party_type"], name: "index_telecoms_on_party_id_and_party_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

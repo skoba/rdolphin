@@ -1,4 +1,4 @@
 class Address < ActiveRecord::Base
-  belongs_to :person
+  belongs_to :party, polymorphic: true
   validates :address_type, presence: true
 end
