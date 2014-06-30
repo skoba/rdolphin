@@ -1,4 +1,6 @@
 FactoryGirl.define do
+
+
   factory :prescription do
     uid { SecureRandom.uuid }
     category "persistent"
@@ -10,3 +12,5 @@ FactoryGirl.define do
 
   end
 end
+
+

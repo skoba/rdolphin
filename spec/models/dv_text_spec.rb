@@ -2,9 +2,18 @@ RSpec.describe DvText, :type => :model do
   it {is_expected.to belong_to :composition}
 
   let(:dv_text) {build :dv_text}
-
+ 
   it 'is valid' do
     expect(dv_text).to be_valid
+  end
+
+  describe 'values' do
+    subject { dv_text }
+
+    it { is_expected.to respond_to 'value' }
+    it { is_expected.to respond_to 'txt_value' }
+    it { is_expected.to respond_to 'path' }
+    it { is_expected.to respond_to 'node_id' }
   end
 
   it 'txt value is assigned properly' do
