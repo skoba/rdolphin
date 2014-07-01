@@ -1,14 +1,14 @@
 <h1>処方一覧</h1>
-<table width="" cellspacing="" cellpadding="" border="">
+<table>
   <thead>
     <tr>
-      <th>処方ID</th><th>処方日</th><th></th>
+      <th>処方ID</th><th>処方日</th><th>発行医療機関</th><th></th>
     </tr>
   </thead>
   <tbody>
 <%= @prescriptions.each do |prescription| %>
     <tr>
-      <td><%= prescription.uid %></td><td><%= prescription.start_time %></td><td></td>
+      <td><%= prescription.uid %></td><td><%= prescription.start_time %></td><td></td><td><%= link_to '内容を見る', '#' %></td>
     </tr>
 <% end %>
   </tbody>

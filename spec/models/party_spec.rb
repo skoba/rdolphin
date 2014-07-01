@@ -12,4 +12,12 @@ RSpec.describe Party, :type => :model do
   it 'has many identifiers' do
     expect(party).to have_many(:identifiers)
   end
+
+  it 'has many addresses' do
+    expect(party).to have_many(:addresses)
+  end
+
+  it 'has many telecoms' do
+    expect(party).to have_many(:telecoms)
+  end
 end
