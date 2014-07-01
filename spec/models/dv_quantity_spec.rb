@@ -23,5 +23,4 @@ RSpec.describe DvQuantity, type: :model do
   it 'assigns magnitude to shortcut for num_value' do
     expect(dv_quantity.magnitude).to eq 120
   end
-
 end

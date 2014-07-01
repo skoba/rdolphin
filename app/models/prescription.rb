@@ -1,2 +1,3 @@
 class Prescription < Composition
+  
 end
