@@ -87,11 +87,9 @@ FactoryGirl.define do
     archetype_id 'openEHR-EHR-INSTRUCTION.medication_order.v1'
   end
 
-  
-  factory :medication_order2 do
+    factory :medication_order2 do
     
   end
-
 
   factory :prescription do
     uid { SecureRandom.uuid }
@@ -104,3 +102,5 @@ FactoryGirl.define do
 
   end
 end
+
+
