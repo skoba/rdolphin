@@ -7,9 +7,9 @@
   <tbody>
     <% @compositions.each do |composition| %>
     <tr>
-      <td>バイタルサイン</td>
+      <td><%= composition.name %></td>
       <td><%= composition.start_time %></td>
-      <td><%= link_to '表示', person_compositions_show_path(person_id: @person.id, id: composition.id) %></td>
+      <td><%= link_to '表示', '#' %></td>
     </tr>
     <% end %>
   </tbody>
