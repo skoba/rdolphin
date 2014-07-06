@@ -1,7 +1,7 @@
 require 'ffaker'
 
 FactoryGirl.define do
-  factory :vital_sign_composition do
+  factory :vital_sign do
     uid { SecureRandom.uuid }
     category "persistent"
     start_time { Faker::Time.date }

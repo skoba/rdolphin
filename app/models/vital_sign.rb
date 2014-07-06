@@ -1,4 +1,4 @@
-class VitalSignComposition < Composition
+class VitalSign < Composition
   def initialize
     super
     self.archetype_id = 'openEHR-EHR-COMPOSITION-report-vital_sign.v1'
