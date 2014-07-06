@@ -1,0 +1,16 @@
+<h2>バイタルサイン</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>収縮期血圧</th><th>拡張期血圧</th><th>脈拍</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @vital_sign.systolic_blood_pressure %></td><td><%= @vital_sign.diastolic_blood_pressure %></td><td><%= @vital_sign.pulse_rate %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'XML', person_vital_signs_show_path(id: @vital_sign.id, format: :xml) %> | <%= link_to 'JSON', person_vital_signs_show_path(id: @vital_sign.id, format: :json) %> | <%= link_to 'CSV', person_vital_signs_show_path(id: @vital_sign, format: :csv) %> |<%= link_to '戻る', person_path(@vital_sign.ehr.person) %>
+
+

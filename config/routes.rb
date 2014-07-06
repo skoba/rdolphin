@@ -3,7 +3,7 @@ Rdolphin::Application.routes.draw do
   get 'prescriptions/show'
 
   resources :people, only: [:show, :index] do
-    get 'compositions/show'
+    get 'vital_signs/show'
   end
 
   get 'ehrs/index'

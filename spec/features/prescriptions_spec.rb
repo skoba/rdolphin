@@ -5,4 +5,6 @@ feature 'Prescriptions browser' do
     visit prescriptions_index_path
     expect(page).to have_content '処方一覧'
   end
+
+  scenario 'Prescription details'
 end

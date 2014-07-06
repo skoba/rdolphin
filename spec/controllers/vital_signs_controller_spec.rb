@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CompositionsController, :type => :controller do
+RSpec.describe VitalSignsController, :type => :controller do
 
   describe "GET 'show'" do
 #     it "returns http success" do
