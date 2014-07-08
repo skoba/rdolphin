@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :medicaion_order1, class: DvText do
+  factory :medication_order1, class: DvText do
     name 'medicine'
     path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][1]/decription[at0002]/items[at0003]'
     txt_value 'medicine'
@@ -98,7 +98,7 @@ FactoryGirl.define do
     archetype_id 'openEHR-EHR-INSTRUCTION.medication_order.v1'
   end
 
-  factory :medication_order2 do
+  factory :medication_order2, class: DvText do
     name 'medicine'
     path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][2]/decription[at0002]/items[at0003]'
     txt_value 'medicine'
@@ -107,15 +107,51 @@ FactoryGirl.define do
     archetype_id 'openEHR-EHR-INSTRUCTION.medication_order.v1'    
   end
 
+  factory :ingredient_name2_1, class: DvText do
+    name 'Name'
+    txt_value 'Clarithromycin200'
+    rm_type_name 'DV_TEXT'
+    archetype_id 'openEHR-EHR-CLUSTER.medication_ingredients.v1'
+    node_id 'at0002'
+    path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][2]/decription[at0002]/items[openEHR-EHR-CLUSTER.medication_ingrendients.v1]/items[at0001][1]/items[at0002]'
+  end
+
+  factory :ingredient_form2_1, class: DvText do
+    name 'Form'
+    txt_value 'Tablet'
+    rm_type_name 'DV_TEXT'
+    archetype_id 'openEHR-EHR-CLUSTER.medication_ingredients.v1'
+    node_id 'at0010'
+    path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][2]/decription[at0002]/items[openEHR-EHR-CLUSTER.medication_ingrendients.v1]/items[at0001][1]/items[at0010]'
+  end
+
+  factory :ingredient_amount2_1, class: DvQuantity do
+    name 'Amount'
+    magnitude '2'
+    rm_type_name 'DV_QUANTITY'
+    archetype_id 'openEHR-EHR-CLUSTER.medication_amount.v1'
+    node_id 'at0001'
+    path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][2]/decription[at0002]/items[openEHR-EHR-CLUSTER.medication_ingrendients.v1]/items[at0001][1]/items[openEHR-EHR-CLUSTER.medication_amount.v1]/items[at0001]'
+  end
+
+  factory :ingredient_dose_unit2_1, class: DvText do
+    name 'Dose unit'
+    txt_value 'T'
+    rm_type_name 'DV_TEXT'
+    archetype_id 'openEHR-EHR-CLUSTER.medication_amount.v1'
+    node_id 'at0002'
+    path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][2]/decription[at0002]/items[openEHR-EHR-CLUSTER.medication_ingrendients.v1]/items[at0001][1]/items[openEHR-EHR-CLUSTER.medication_amount.v1]/items[at0002]'
+  end
+
   factory :prescription do
     uid { SecureRandom.uuid }
     category "persistent"
     start_time { Faker::Time.date }
     ehr
-    # after(:create) do |prescription|
-    #   .content_items << create(:content_item)
-    # end
-
+    after(:create) do |prescription|
+      prescription.content_items << create(:medication_order1)
+      prescription.content_items << create(:medication_order2)
+   end
   end
 end
 
