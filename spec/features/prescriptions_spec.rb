@@ -6,5 +6,7 @@ feature 'Prescriptions browser' do
     expect(page).to have_content '処方一覧'
   end
 
-  scenario 'Prescription details'
+  scenario 'Prescription details' do
+
+  end
 end

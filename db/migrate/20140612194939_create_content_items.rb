@@ -5,7 +5,7 @@ class CreateContentItems < ActiveRecord::Migration
       t.string :rm_type_name, null: false, index: true
       t.string :archetype_id, null: false, index: true
       t.string :name
-      t.string :path, null: false
+      t.text :path, null: false
       t.string :node_id
       t.string :txt_data
       t.float :num_value

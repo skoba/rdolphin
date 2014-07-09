@@ -1,9 +1,9 @@
 FactoryGirl.define do
-  factory :medication_order1, class: DvText do
+  factory :medication_order1, class: Instruction do
     name 'medicine'
     path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][1]/decription[at0002]/items[at0003]'
     txt_value 'medicine'
-    rm_type_name 'DV_TEXT'
+    rm_type_name 'INSTRUCTION'
     node_id 'at0003'
     archetype_id 'openEHR-EHR-INSTRUCTION.medication_order.v1'
   end
@@ -89,10 +89,10 @@ FactoryGirl.define do
     archetype_id 'openEHR-EHR-INSTRUCTION.medication_order.v1'
   end
 
-  factory :medicaion_structured_timing_start, class: DvText do
+  factory :medicaion_structured_timing_start, class: DvDate do
     name 'Start date'
     path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][1]/decription[at0002]/items[at0010]/item[at0012]'
-    date '2014-07-01'
+    date_value '2014-07-01'
     rm_type_name 'DV_DATE'
     node_id 'at0003'
     archetype_id 'openEHR-EHR-INSTRUCTION.medication_order.v1'
