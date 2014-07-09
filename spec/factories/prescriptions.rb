@@ -149,8 +149,9 @@ FactoryGirl.define do
     start_time { Faker::Time.date }
     ehr
     after(:create) do |prescription|
-      prescription.content_items << create(:medication_order1)
-      prescription.content_items << create(:medication_order2)
+      [:medication_order1, :ingredient_name1, :ingredient_form1, :ingredient_amount1, :ingredient_dose_unit1, :ingredient_name2, :ingredient_form2, :ingredient_amount2, :ingredient_dose_unit2, :medicaion_timing1, :medicaion_structured_timing_start, :medication_order2, :ingredient_name2_1, :ingredient_form2_1, :ingredient_amount2_1, :ingredient_dose_unit2_1].each do |item|
+        prescription.content_items << create(item)
+      end
    end
   end
 end
