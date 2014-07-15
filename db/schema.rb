@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715095910) do
+ActiveRecord::Schema.define(version: 20140715141944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,24 @@ ActiveRecord::Schema.define(version: 20140715095910) do
 
   add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
 
+  create_table "data_values", force: true do |t|
+    t.string   "rm_type_name"
+    t.integer  "element_id"
+    t.string   "text_value"
+    t.boolean  "bool_value"
+    t.string   "code"
+    t.float    "num_value"
+    t.integer  "int_value"
+    t.date     "date_value"
+    t.time     "time_value"
+    t.datetime "datetime_value"
+    t.string   "unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "data_values", ["element_id"], name: "index_data_values_on_element_id", using: :btree
+
   create_table "ehrs", force: true do |t|
     t.string   "ehr_id",     null: false
     t.boolean  "queryable"
@@ -101,6 +119,7 @@ ActiveRecord::Schema.define(version: 20140715095910) do
   create_table "item_structures", force: true do |t|
     t.string   "name"
     t.string   "archetype_id"
+    t.string   "node_id"
     t.text     "path"
     t.string   "rm_type_name"
     t.integer  "item_id"

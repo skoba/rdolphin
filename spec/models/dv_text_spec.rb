@@ -1,5 +1,5 @@
 RSpec.describe DvText, :type => :model do
-  it {is_expected.to belong_to :composition}
+  it {is_expected.to belong_to :element}
 
   let(:dv_text) {build :dv_text}
  
@@ -11,21 +11,19 @@ RSpec.describe DvText, :type => :model do
     subject { dv_text }
 
     it { is_expected.to respond_to 'value' }
-    it { is_expected.to respond_to 'txt_value' }
-    it { is_expected.to respond_to 'path' }
-    it { is_expected.to respond_to 'node_id' }
+    it { is_expected.to respond_to 'text_value' }
   end
 
   it 'txt value is assigned properly' do
-    expect(dv_text.txt_value).to eq 'headache'
+    expect(dv_text.text_value).to eq 'headache'
   end
 
-  it 'assigns shortcut to value for txt_value' do
+  it 'assigns shortcut to value for text_value' do
     expect(dv_text.value).to eq 'headache'
   end
 
-  it 'is not valid without txt_value' do
-    dv_text.txt_value = nil
+  it 'is not valid without text_value' do
+    dv_text.text_value = nil
     expect(dv_text).not_to be_valid
   end
 end

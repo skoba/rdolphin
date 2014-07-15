@@ -3,6 +3,7 @@ class CreateStructures < ActiveRecord::Migration
     create_table :item_structures do |t|
       t.string :name
       t.string :archetype_id
+      t.string :node_id
       t.text :path
       t.string :rm_type_name
       t.references :item, index: true, polymorphic: true

@@ -1,5 +1,5 @@
-class DvText < ContentItem
-  validates :txt_value, presence: true
+class DvText < DataValue
+  validates :text_value, presence: true
 
-  alias_attribute :value, :txt_value
+  alias_attribute :value, :text_value
 end

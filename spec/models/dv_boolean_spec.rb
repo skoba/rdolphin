@@ -1,5 +1,5 @@
 RSpec.describe DvBoolean, :type => :model do
-  it {is_expected.to belong_to :composition}
+  it {is_expected.to belong_to :element}
 
   let(:dv_boolean) {build :dv_boolean}
  
@@ -13,8 +13,6 @@ RSpec.describe DvBoolean, :type => :model do
 
     it { is_expected.to respond_to 'bool_value' }
     it { is_expected.to respond_to 'value' }
-    it { is_expected.to respond_to 'path' }
-    it { is_expected.to respond_to 'node_id' }
   end
 
   it 'value is assigned properly' do

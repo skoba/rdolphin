@@ -1,5 +1,5 @@
-class DvCodedText < ContentItem
+class DvCodedText < DataValue
   validates :code, presence: true
 
-  alias_attribute :value, :txt_value
+  alias_attribute :value, :text_value
 end
