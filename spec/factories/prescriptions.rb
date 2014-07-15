@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :medication_order1, class: Instruction do
+  factory :medication_order1, class: DvText do
     name 'medicine'
     path '[openEHR-EHR-COMPOSITION.medication_list.v1]/content[openEHR-EHR-INSTRUCTION.medication_order.v1]/activities[at0001][1]/decription[at0002]/items[at0003]'
     txt_value 'medicine'

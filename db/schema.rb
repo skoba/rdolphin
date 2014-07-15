@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704182448) do
+ActiveRecord::Schema.define(version: 20140715095910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,19 @@ ActiveRecord::Schema.define(version: 20140704182448) do
   end
 
   add_index "identifiers", ["party_id", "party_type"], name: "index_identifiers_on_party_id_and_party_type", using: :btree
+
+  create_table "item_structures", force: true do |t|
+    t.string   "name"
+    t.string   "archetype_id"
+    t.text     "path"
+    t.string   "rm_type_name"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_structures", ["item_id", "item_type"], name: "index_item_structures_on_item_id_and_item_type", using: :btree
 
   create_table "parties", force: true do |t|
     t.string   "type"
