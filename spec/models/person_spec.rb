@@ -39,4 +39,8 @@ RSpec.describe Person, :type => :model do
   it 'is associated with telecoms' do
     expect(person.telecoms).to have(3).items
   end
+
+  it 'has one composition through ehr' do
+    expect(person).to have(1).composition
+  end
 end
