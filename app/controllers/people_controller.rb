@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
   end
 
   def show
-    @compositions = @person.ehrs.first.compositions
+    @compositions = @person.ehr.compositions
   end
 
   private

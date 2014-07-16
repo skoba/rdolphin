@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Person, :type => :model do
+  it {is_expected.to have_one :ehr }
   let(:person) {create :person}
 
   it 'is valid with all' do
