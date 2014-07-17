@@ -70,11 +70,12 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  factory :vitalsign_composition, class: VitalSignComposition do
+  factory :vitalsign, class: VitalSign do
     uid { SecureRandom.uuid }
     category "persistent"
     start_time "2014-06-13 02:05:42"
     archetype_id "openEHR-EHR-COMPOSITION-vital_sign.v1"
+    name 'Vital Sign report'
     after(:create) do |vs|
       vs.content_items << create(:systolic_blood_pressure)
       vs.content_items << create(:diastolic_blood_pressure)
@@ -90,7 +91,7 @@ FactoryGirl.define do
     modifiable false
     after(:create) do |ehr|
       20.times do
-        ehr.compositions << create(:vitalsign_composition, ehr: ehr)
+        ehr.compositions << create(:vitalsign, ehr: ehr)
       end
     end
   end
@@ -103,10 +104,10 @@ FactoryGirl.define do
     date_of_birth { Faker::Time.date(year_range: 100)[0,10] }
     gender { Faker::Identification.gender }
     after(:create) do |dummy_person|
-      dummy_person.addresses << build(:dummy_address, person: dummy_person)
-      dummy_person.identifiers << build(:dummy_identifier, person: dummy_person)
-      dummy_person.telecoms << build(:dummy_telecom, person: dummy_person)
-      dummy_person.ehrs << create(:dummy_ehr, person: dummy_person)
+      dummy_person.addresses << create(:dummy_address)
+      dummy_person.identifiers << create(:dummy_identifier)
+      dummy_person.telecoms << create(:dummy_telecom)
+      dummy_person.ehr = create(:dummy_ehr)
     end
   end
 end

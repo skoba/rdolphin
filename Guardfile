@@ -1,4 +1,5 @@
-guard 'spring', :rspec_cli => '--color' do
+notification :libnotify
+guard :rspec, all_on_start: true, all_after_pass: true, all_after_fail: false, notification: true, cmd: 'spring rspec' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^spec/spec_helper\.rb$})                   { |m| 'spec' }
   watch(%r{^spec/rails_helper\.rb$})                   { |m| 'spec' }

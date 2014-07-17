@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140715141944) do
     t.string   "rm_type_name",   null: false
     t.string   "archetype_id",   null: false
     t.string   "name"
-    t.text     "path",           null: false
+    t.string   "path",           null: false
     t.string   "node_id"
     t.string   "txt_value"
     t.float    "num_value"
