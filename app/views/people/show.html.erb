@@ -1,6 +1,19 @@
 <div class="container">
 <div class="row">
-  <span>ID: <%= @person.id %></span><span>氏名: <%= @person.family_name %> <%= @person.given_name %></span><span>生年月日: <%= @person.date_of_birth %></span><span>性別: <%= @person.gender %></span>
+<% @person.identifiers.each do |identity| %>
+  <div class="identity">
+    <b>Global ID Issuer:</b><%= identity.issuer %><br />
+    <b>ID:</b> <%= identity.identity %><br />
+  </div>
+<% end %>
+  <span><b>Local ID:</b> <%= @person.id %></span><span><b>氏名:</b> <%= @person.family_name %> <%= @person.given_name %></span><span><b>生年月日:</b> <%= @person.date_of_birth %></span><span><b>性別:</b> <%= @person.gender %></span>
 </div>
+<b>住所：</b>
+<% @person.addresses.each do |address| %>
+  <address>
+    <b>住所種別：</b> <%= address.address_type %><br />
+    <b>〒</b><%= address.post_code %> <%= address.prefecture %><%= address.city %>市<%= address.town %><br />
+  </address>
+<% end %>
 <div class="compositions_table" id="#compositions"><%= render partial: 'compositions' %></div>
 <div class="contents"><%= render partial: 'contents' %></div>
