@@ -112,6 +112,6 @@ FactoryGirl.define do
   end
 end
 
-20.times do
+100.times do
   FactoryGirl.create :dummy_person
 end
