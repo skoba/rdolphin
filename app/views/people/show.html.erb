@@ -1,6 +1,9 @@
 <div class="container">
 <div class="row">
   <span>ID: <%= @person.id %></span><span>氏名: <%= @person.family_name %> <%= @person.given_name %></span><span>生年月日: <%= @person.date_of_birth %></span><span>性別: <%= @person.gender %></span>
+<% @person.addresses.each do |address| %>
+ 
+<% end %>
 </div>
 <div class="compositions_table" id="#compositions"><%= render partial: 'compositions' %></div>
 <div class="contents"><%= render partial: 'contents' %></div>
