@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'prescriptions/show'
 
   resources :people, only: [:show, :index] do
-    get 'vital_signs/show'
+    resources :compositions, only: [:show]
   end
 
   get 'ehrs/index'
