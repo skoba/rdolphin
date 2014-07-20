@@ -9,7 +9,7 @@
     <tr>
       <td><%= composition.name %></td>
       <td><%= composition.start_time %></td>
-      <td><%= link_to '表示', '#' %></td>
+      <td><%= link_to '表示', [composition.ehr.person, composition] %></td>
     </tr>
     <% end %>
   </tbody>
