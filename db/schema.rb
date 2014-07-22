@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715141944) do
+ActiveRecord::Schema.define(version: 20140722130632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140715141944) do
     t.string   "rm_type_name",   null: false
     t.string   "archetype_id",   null: false
     t.string   "name"
-    t.string   "path",           null: false
+    t.text     "path",           null: false
     t.string   "node_id"
     t.string   "txt_value"
     t.float    "num_value"
@@ -71,9 +71,12 @@ ActiveRecord::Schema.define(version: 20140715141944) do
     t.datetime "updated_at"
     t.string   "code"
     t.text     "unit"
+    t.integer  "item_id"
+    t.string   "item_type"
   end
 
   add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
+  add_index "content_items", ["item_id", "item_type"], name: "index_content_items_on_item_id_and_item_type", using: :btree
 
   create_table "data_values", force: true do |t|
     t.string   "rm_type_name"
