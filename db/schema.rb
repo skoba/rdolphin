@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722130632) do
+ActiveRecord::Schema.define(version: 20140723060809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,8 +129,11 @@ ActiveRecord::Schema.define(version: 20140722130632) do
     t.string   "item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "content_item_id"
+    t.string   "content_item_type"
   end
 
+  add_index "item_structures", ["content_item_id", "content_item_type"], name: "index_item_structures_on_content_item_id_and_content_item_type", using: :btree
   add_index "item_structures", ["item_id", "item_type"], name: "index_item_structures_on_item_id_and_item_type", using: :btree
 
   create_table "parties", force: true do |t|
