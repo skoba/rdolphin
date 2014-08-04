@@ -1,3 +1,0 @@
-class Instruction < Entry
-
-end

@@ -1,1 +1,0 @@
-Rdolphin::Application.config.secret_key_base = 'd23a7ce1b0bf36d5a05f102d20e6dfc305cc822287b7b14a8f7c13dafbaf09049c3e954244f1c73c8ddbae56c21293c3fc034e0e02d46e1bc707df77ace3c172'
