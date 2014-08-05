@@ -1,0 +1,3 @@
+class Element < ItemStructure
+  
+end
