@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804161930) do
+ActiveRecord::Schema.define(version: 20140806024308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "data_values", force: true do |t|
+    t.boolean  "bool_value"
+    t.string   "text_value"
+    t.integer  "int_value"
+    t.float    "real_value"
+    t.decimal  "decimal_value"
+    t.date     "date_value"
+    t.datetime "date_time_value"
+    t.string   "code"
+    t.integer  "element_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "data_values", ["element_id"], name: "index_data_values_on_element_id", using: :btree
 
   create_table "item_structures", force: true do |t|
     t.string   "name"

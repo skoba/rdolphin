@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
+gem 'spring', group: [:development, :test]
 
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
@@ -22,16 +22,16 @@ gem 'database_cleaner', group: :test
 gem 'launchy', group: :test
 gem 'factory_girl_rails'
 gem 'ffaker'
-gem 'rails_layout', group: :development
-gem 'rspec', group: :development
-gem 'rspec-rails', group: :development
-gem 'capybara', group: :development
-gem 'poltergeist', group: :development
-gem 'rspec-collection_matchers', group: :development
-gem 'guard-spring', group: :development
-gem 'guard-rspec', group: :development
-gem 'libnotify', group: :development
+gem 'rails_layout', group:  [:development, :test]
+gem 'rspec', group: [:development, :test]
+gem 'rspec-rails', group: [:development, :test]
+gem 'capybara', group: [:development, :test]
+gem 'poltergeist', group: [:development, :test]
+gem 'rspec-collection_matchers', group: [:development, :test]
+gem 'guard-spring', group: [:development, :test]
+gem 'guard-rspec', group:  [:development, :test]
+gem 'libnotify', group:  [:development, :test]
 gem 'rails-erd', group: :development
-gem "spring-commands-rspec", group: :development
-
+gem "spring-commands-rspec", group: [:development, :test]
+gem 'shoulda-matchers', group: :test
 

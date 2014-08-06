@@ -11,10 +11,14 @@ RSpec.describe ItemStructure, :type => :model do
     end
   end
 
-  describe 'Element' do
+  describe Element do
     let(:element) {build :element}
     subject {element}
 
     it {is_expected.to be_valid}
+
+    context 'association' do
+      it {is_expected.to have_one :data_value}
+    end
   end
 end
