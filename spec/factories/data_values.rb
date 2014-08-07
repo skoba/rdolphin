@@ -25,4 +25,8 @@ FactoryGirl.define do
     decimal_value 23.41
     element
   end
+
+  factory :dv_date do
+    date_value '2014-08-09'
+  end
 end
