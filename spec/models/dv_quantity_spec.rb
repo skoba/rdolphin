@@ -3,6 +3,7 @@ describe DvQuantity do
   subject {dv_quantity}
 
   it {is_expected.to be_valid}
+  it {is_expected.to validate_presence_of :value}
 
   it 'value is alias of decimal_value' do
     expect(dv_quantity.value).to eq 23.41

@@ -29,4 +29,8 @@ FactoryGirl.define do
   factory :dv_date do
     date_value '2014-08-09'
   end
+
+  factory :dv_date_time do
+    date_time_value '2014-08-09T15:14:30Z'
+  end
 end
