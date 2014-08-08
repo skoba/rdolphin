@@ -13,17 +13,14 @@ FactoryGirl.define do
 
   factory :dv_boolean do
     bool_value true
-    element
   end
 
   factory :dv_text do
     text_value "Sample text data"
-    element
   end
 
   factory :dv_quantity do
     decimal_value 23.41
-    element
   end
 
   factory :dv_date do

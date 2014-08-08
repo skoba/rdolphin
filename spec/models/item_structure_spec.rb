@@ -21,4 +21,15 @@ RSpec.describe ItemStructure, :type => :model do
       it {is_expected.to have_one :data_value}
     end
   end
+
+  describe Cluster do
+    let(:cluster) {create :cluster}
+    subject {cluster}
+
+    it {is_expected.to be_valid}
+
+    it 'has subcluster and element' do
+      expect(cluster.items.size).to eq 2
+    end
+  end
 end
