@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 20140806024308) do
 
   create_table "items", force: true do |t|
     t.string   "name"
-    t.string   "type"
     t.string   "archetypeid"
     t.string   "nodeid"
     t.string   "path"
     t.integer  "item_id"
+    t.string   "item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,3 @@
 class Cluster < Item
-  belongs_to :item
-  has_many :items
+  has_many :items, as: :item
 end

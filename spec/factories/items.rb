@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :item do
     name "Test item"
-    type "Item"
+ #   type "Item"
     archetypeid "openEHR-EHR-ITEM_STRUCTURE.test.v1"
     nodeid "at0001"
     path "/data/item[at0001]"
@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :element do
     name 'Leaf element'
-    type 'Element'
+#    type 'Element'
     archetypeid 'openEHR-EHR-ELEMENT.test.v1'
     nodeid 'at0001'
     path '/data/item[at00001]/value'
@@ -20,7 +20,7 @@ FactoryGirl.define do
   
   factory :cluster do
     name 'Cluster tree'
-    type 'Cluster'
+#    type 'Cluster'
     archetypeid 'openEHR-EHR-CLUSTER.test.v1'
     nodeid 'at0002'
     path '/data/item[at0003]'
@@ -32,7 +32,7 @@ FactoryGirl.define do
 
   factory :sub_cluster, class: Cluster do
     name 'Sub Cluster'
-    type 'Cluster'
+#    type 'Cluster'
     archetypeid 'openEHR-EHR-CLUSTER.test.v1'
     nodeid 'at0003'
     path '/data/item[at0003]/item'
@@ -40,7 +40,7 @@ FactoryGirl.define do
 
   factory :sub_element, class: Element do
     name 'Sub element'
-    type 'Element'
+#    type 'Element'
     archetypeid 'openEHR-EHR-CLUSTER.test.v1'
     nodeid 'at0003'
     path '/data/item/at[at0003]/item/value'
