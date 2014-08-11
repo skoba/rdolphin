@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe ItemStructure, :type => :model do
-  describe 'ItemStructure' do
-    let(:item_structure) {build :item_structure}
-    subject {item_structure}
+RSpec.describe Item, :type => :model do
+  describe 'Item' do
+    let(:item) {build :item}
+    subject {item}
 
     it {is_expected.to be_valid}  
     it 'name is Test structure' do
-      expect(item_structure.name).to eq 'Test structure'
+      expect(item.name).to eq 'Test structure'
     end
   end
 

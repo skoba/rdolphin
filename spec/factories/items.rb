@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :item_structure do
-    name "Test structure"
-    type "ItemStructure"
+  factory :item do
+    name "Test item"
+    type "Item"
     archetypeid "openEHR-EHR-ITEM_STRUCTURE.test.v1"
     nodeid "at0001"
     path "/data/item[at0001]"
@@ -44,7 +44,7 @@ FactoryGirl.define do
     nodeid 'at0002'
     path '/data/item[at0003]'
     after(:create) do |cluster|
-      cluster.elements << create(:sub_element1)
+      cluster.items << create(:sub_element1)
       cluster.items << create(:sub_cluster)
     end
   end

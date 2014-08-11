@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808110538) do
+ActiveRecord::Schema.define(version: 20140806024308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,24 +32,15 @@ ActiveRecord::Schema.define(version: 20140808110538) do
 
   add_index "data_values", ["element_id"], name: "index_data_values_on_element_id", using: :btree
 
-  create_table "item_structures", force: true do |t|
+  create_table "items", force: true do |t|
     t.string   "name"
     t.string   "type"
     t.string   "archetypeid"
     t.string   "nodeid"
     t.string   "path"
+    t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "items", force: true do |t|
-    t.integer  "item_structure_id"
-    t.integer  "cluster_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "items", ["cluster_id"], name: "index_items_on_cluster_id", using: :btree
-  add_index "items", ["item_structure_id"], name: "index_items_on_item_structure_id", using: :btree
 
 end
