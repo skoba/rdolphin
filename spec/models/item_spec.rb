@@ -7,7 +7,7 @@ RSpec.describe Item, :type => :model do
 
     it {is_expected.to be_valid}  
     it 'name is Test structure' do
-      expect(item.name).to eq 'Test structure'
+      expect(item.name).to eq 'Test item'
     end
   end
 
