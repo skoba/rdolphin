@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :nodeid
       t.string :path
       t.references :item, polymorphic: true
+      t.references :content, polymorphic: true
 
       t.timestamps
     end

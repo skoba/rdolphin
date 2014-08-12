@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806024308) do
+ActiveRecord::Schema.define(version: 20140812135120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contents", force: true do |t|
+    t.string   "archetypeid"
+    t.string   "nodeid"
+    t.string   "path"
+    t.integer  "content_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contents", ["content_id"], name: "index_contents_on_content_id", using: :btree
 
   create_table "data_values", force: true do |t|
     t.boolean  "bool_value"
