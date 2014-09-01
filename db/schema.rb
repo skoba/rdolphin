@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901102636) do
+ActiveRecord::Schema.define(version: 20140901192916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,12 @@ ActiveRecord::Schema.define(version: 20140901102636) do
     t.string   "name"
     t.string   "value"
     t.integer  "address_id"
+    t.string   "address_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "address_details", ["address_id", "address_type"], name: "index_address_details_on_address_id_and_address_type", using: :btree
 
   create_table "addresses", force: true do |t|
     t.string   "meaning"
@@ -76,6 +79,17 @@ ActiveRecord::Schema.define(version: 20140901102636) do
 
   add_index "data_values", ["element_id"], name: "index_data_values_on_element_id", using: :btree
 
+  create_table "detail_items", force: true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.integer  "party_detail_id"
+    t.string   "party_detail_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "detail_items", ["party_detail_id", "party_detail_type"], name: "index_detail_items_on_party_detail_id_and_party_detail_type", using: :btree
+
   create_table "identity_details", force: true do |t|
     t.string   "name"
     t.string   "value"
@@ -104,6 +118,17 @@ ActiveRecord::Schema.define(version: 20140901102636) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "party_details", force: true do |t|
+    t.string   "name"
+    t.string   "purpose"
+    t.integer  "party_id"
+    t.string   "party_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "party_details", ["party_id", "party_type"], name: "index_party_details_on_party_id_and_party_type", using: :btree
 
   create_table "party_identities", force: true do |t|
     t.string   "name"

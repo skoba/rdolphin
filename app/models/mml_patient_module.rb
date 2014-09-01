@@ -1,0 +1,3 @@
+class MMLPatientModule < Person
+  
+end

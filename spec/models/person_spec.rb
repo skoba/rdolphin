@@ -65,4 +65,16 @@ RSpec.describe Person, :type => :model do
       end
     end
   end
+
+  context 'contacts' do
+    it 'person has 2 contacts' do
+      expect(person.contacts).to have(2).items
+    end
+  end
+
+  context 'details' do
+    it 'person has 1 details' do
+      expect(person.party_details).to have(1).item
+    end
+  end
 end

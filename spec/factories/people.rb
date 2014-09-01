@@ -7,6 +7,9 @@ FactoryGirl.define do
       create :person_name, party: person
       create :local_identity, party: person
       create :regional_identity, party: person
+      create :home_contact, party: person
+      create :work_contact, party: person
+      create :details_in_general, party: person
     end
   end
 
@@ -72,9 +75,142 @@ FactoryGirl.define do
     valid_from '2013-10-01'
     valid_to '2014-09-03'
     association :party, factory: :person
+    after(:create) do |contact|
+      create :home_address, contact: contact
+      create :home_phone, contact: contact
+    end
   end
 
   factory :home_address, class: Address do
-    
+    meaning 'postal address'
+    name 'apartment address'
+    association :contact, factory: :home_contact
+    after :create do |address|
+      create :home_address_pref, address: address
+      create :home_address_city, address: address
+      create :home_address_town, address: address
+      create :home_address_number, address: address
+      create :home_zip, address: address
+    end
+  end
+
+  factory :home_address_pref, class: AddressDetail do
+    name 'prefecture'
+    value 'Kyotofu'
+    association :address, factory: :home_address
+  end
+
+  factory :home_address_city, class: AddressDetail do
+    name 'city'
+    value 'Kyoto'
+    association :address, factory: :home_address
+  end
+
+  factory :home_address_town, class: AddressDetail do
+    name 'town'
+    value 'Chudo-ji'
+    association :address, factory: :home_address
+  end
+
+  factory :home_address_number, class: AddressDetail do
+    name 'home number'
+    value '91'
+    association :address, factory: :home_address
+  end
+
+  factory :home_zip, class: AddressDetail do
+    name 'zip'
+    value '600-8815'
+    association :address, factory: :home_address
+  end
+
+  factory :home_phone, class: Address do
+    meaning 'telecom address' 
+    name 'phone'
+    association :contact, factory: :home_contact
+    after :create do |address|
+      create :home_phone_area, address: address 
+      create :home_phone_city, address: address 
+      create :home_phone_number, address: address 
+    end
+  end
+
+  factory :home_phone_area, class: AddressDetail do
+    name 'area'
+    value '075'
+    association :address, factory: :home_phone
+  end
+
+  factory :home_phone_city, class: AddressDetail do
+    name 'city'
+    value '123'    
+    association :address, factory: :home_phone
+  end
+
+  factory :home_phone_number, class: AddressDetail do
+    name 'number'
+    value '4567'
+    association :address, factory: :home_phone
+  end
+
+  factory :work_contact, class: Contact do
+    name 'Work'
+    purpose 'second contact'
+    association :party, factory: :person
+    after :create do |contact|
+      create :work_address, contact: contact
+    end
+  end
+
+  factory :work_address, class: Address do
+    name 'work'
+    meaning 'postal address'
+    association :contact, factory: :work_contact
+    after :create do |address|
+      create :work_address_full, address: address
+    end
+  end
+
+  factory :work_address_full, class: AddressDetail do
+    name 'full'
+    value 'Shogoin Sakyoku, Kyoto city'
+    association :address, factory: :home_phone
+  end
+
+  factory :details_in_general, class: PartyDetail do
+    name 'general'
+    purpose 'general description'
+    association :party, factory: :person
+    after :create do |detail|
+      create :gender, party_detail: detail
+      create :birthday, party_detail: detail
+      create :gender, party_detail: detail
+      create :nationality, party_detail: detail
+      create :marital, party_detail: detail
+    end
+  end
+
+  factory :gender, class: DetailItem do
+    name 'gender'
+    value 'male'
+    association :party_detail, factory: :details_in_general
+  end
+
+  factory :birthday, class: DetailItem do
+    name 'birthday'
+    value '1990-01-01'
+    association :party_detail, factory: :details_in_general
+  end
+
+  factory :nationality, class: DetailItem do
+    name 'nationality'
+    value 'Japan'
+    association :party_detail, factory: :details_in_general
+  end
+
+  factory :marital, class: DetailItem do
+    name 'marital'
+    value 'no'
+    association :party_detail, factory: :details_in_general
   end
 end
