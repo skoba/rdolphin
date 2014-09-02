@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902162646) do
+ActiveRecord::Schema.define(version: 20140902163416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 20140902162646) do
   end
 
   add_index "contacts", ["party_id", "party_type"], name: "index_contacts_on_party_id_and_party_type", using: :btree
+
+  create_table "content_items", force: true do |t|
+    t.integer  "composition_id"
+    t.string   "name"
+    t.string   "node"
+    t.string   "path"
+    t.string   "rm_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
 
   create_table "contents", force: true do |t|
     t.string   "name"

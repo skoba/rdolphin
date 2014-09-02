@@ -1,0 +1,32 @@
+<div class="container">
+ <div class="row">
+ <div class="col-md-4">
+ <h3>Identifiers</h3>
+ <div class="identity">
+ <b>Global ID Issuer:</b><%= @mml_patient.party_identities.where(name: 'regional id').first.purpose %><br />
+ <b>ID:</b> <%= @mml_patient.master_id %><br />
+ </div>
+ <h3>Profile</h3>
+ <div class="profile">
+ <b>Local ID:</b> <%= @mml_patient.other_ids.first.identity_details.first.value %><br />
+ <b>氏名:</b> <%= @mml_patient.person_name.first.identity_details.where(name: 'family name').first.value %> <%= @mml_patient.person_name.first.identity_details.where(name: 'given name').first.value %><br />
+ <b>生年月日:</b> <%= @mml_patient.birthday %><br />
+ <b>性別:</b> <%= @mml_patient.sex %><br />
+ </div>
+ <h3>Address</h3>
+ <% @mml_patient.postal_addresses.each do |address| %>
+ <address>
+ <b>住所種別：</b> <%= address.name %><br />
+ <% address.address_details.each do |detail| %><%= detail.value %> <% end %>
+<br />
+ </address>
+ <% end %>
+ <h3>Telecoms</h3>
+ <% @mml_patient.phones.each do |phone| %>
+ <div class="telecom">
+ <b>Type:</b> <%= phone.meaning %><br />
+ <b>Phone Number:</b> <% phone.address_details.each do |phone| %><%= phone.value %><% end %><br />
+ </div>
+ <% end %>
+ </div>
+</div>

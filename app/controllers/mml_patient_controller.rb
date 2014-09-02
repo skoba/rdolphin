@@ -1,2 +1,0 @@
-class MmlPatientController < ApplicationController
-end
