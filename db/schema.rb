@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901192916) do
+ActiveRecord::Schema.define(version: 20140902162646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20140901192916) do
   end
 
   add_index "addresses", ["contact_id", "contact_type"], name: "index_addresses_on_contact_id_and_contact_type", using: :btree
+
+  create_table "compositions", force: true do |t|
+    t.integer  "ehr_id"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "compositions", ["ehr_id"], name: "index_compositions_on_ehr_id", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -90,6 +99,16 @@ ActiveRecord::Schema.define(version: 20140901192916) do
 
   add_index "detail_items", ["party_detail_id", "party_detail_type"], name: "index_detail_items_on_party_detail_id_and_party_detail_type", using: :btree
 
+  create_table "ehrs", force: true do |t|
+    t.integer  "party_id"
+    t.string   "party_type"
+    t.string   "system_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ehrs", ["party_id", "party_type"], name: "index_ehrs_on_party_id_and_party_type", using: :btree
+
   create_table "identity_details", force: true do |t|
     t.string   "name"
     t.string   "value"
@@ -140,5 +159,15 @@ ActiveRecord::Schema.define(version: 20140901192916) do
   end
 
   add_index "party_identities", ["party_id", "party_type"], name: "index_party_identities_on_party_id_and_party_type", using: :btree
+
+  create_table "versions", force: true do |t|
+    t.string   "lifecycle_state"
+    t.integer  "ehr_id"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "versions", ["ehr_id"], name: "index_versions_on_ehr_id", using: :btree
 
 end
