@@ -36,7 +36,7 @@ xml.mmlPi(:PatientModule,{
         @mml_patient.postal_addresses.each do |address|
           xml.mmlAd :Address, 'mmlAd:repCode' => 'A', 'mmlAd:addressClass' => address.contact.name, 'mmlAd:tableId' => 'mml0024' do
             address.address_details.each do |detail|
-              xml.mmlAd detail.name.tr(' ', '_').camelcase.to_sym, detail.value
+              xml.mmlAd detail.name.tr(' ', '_').camelize(:lower).to_sym, detail.value
             end
           end
         end
