@@ -5,12 +5,20 @@ class MmlPatientsController < ApplicationController
     @mml_patients = MMLPatient.all
   end
 
+  def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.xml
+    end
+  end
+
   private
     def set_mml_patient
       @mml_patient = MMLPatient.find(params[:id])
     end
 
     def mml_patient_params
-      params.require(:mml_patient).permit(:family_name, :given_name, :middle_name, :unstructured_name, :date_of_birth, :gender, :prefix)
+      params.require(:mml_patient).permit(:master_id)
     end
 end
