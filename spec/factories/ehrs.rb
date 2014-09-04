@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :ehr do
-#    party nil
+#    person nil
     system_id "rDolphin"
   end
 end
