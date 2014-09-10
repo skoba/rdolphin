@@ -136,8 +136,8 @@ ActiveRecord::Schema.define(version: 20140902163416) do
     t.string   "path"
     t.integer  "item_id"
     t.string   "item_type"
-    t.integer  "content_id"
-    t.string   "content_type"
+    t.integer  "content_item_id"
+    t.string   "content_item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
