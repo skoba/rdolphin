@@ -1,0 +1,2 @@
+class MmlLabTestsController < ApplicationController
+end
