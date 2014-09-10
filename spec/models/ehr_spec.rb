@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Ehr, :type => :model do
-  it {is_expected.to belong_to :party}
+  it {is_expected.to belong_to :person}
+  it {is_expected.to have_many :versions}
 
   let(:ehr) {build :ehr}
 

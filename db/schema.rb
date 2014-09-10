@@ -112,14 +112,13 @@ ActiveRecord::Schema.define(version: 20140902163416) do
   add_index "detail_items", ["party_detail_id", "party_detail_type"], name: "index_detail_items_on_party_detail_id_and_party_detail_type", using: :btree
 
   create_table "ehrs", force: true do |t|
-    t.integer  "party_id"
-    t.string   "party_type"
+    t.integer  "person_id"
     t.string   "system_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ehrs", ["party_id", "party_type"], name: "index_ehrs_on_party_id_and_party_type", using: :btree
+  add_index "ehrs", ["person_id"], name: "index_ehrs_on_person_id", using: :btree
 
   create_table "identity_details", force: true do |t|
     t.string   "name"

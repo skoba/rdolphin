@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Person, :type => :model do
   it {is_expected.to have_many :party_identities }
   it {is_expected.to have_many :contacts }
+  it {is_expected.to have_one :ehr}
 
   let(:person) {create :person}
 

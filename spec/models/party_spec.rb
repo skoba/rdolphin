@@ -4,7 +4,6 @@ RSpec.describe Party, :type => :model do
   it {is_expected.to have_many :party_identities}
   it {is_expected.to have_many :contacts}
   it {is_expected.to have_many :party_details}
-  it {is_expected.to have_one :ehr}
 
   let(:party) {build :party}
 
