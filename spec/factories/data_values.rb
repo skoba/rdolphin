@@ -5,6 +5,7 @@ FactoryGirl.define do
     int_value 1234
     real_value 567.89
     decimal_value 10.001
+    unit 'mg'
     date_value "2014-08-06"
     date_time_value "2014-08-06T12:13:33"
     code "C089"

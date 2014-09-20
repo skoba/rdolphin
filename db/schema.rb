@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140902163416) do
     t.integer  "int_value"
     t.float    "real_value"
     t.decimal  "decimal_value"
+    t.string   "unit"
     t.date     "date_value"
     t.datetime "date_time_value"
     t.string   "code"
