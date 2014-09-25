@@ -2,10 +2,12 @@ class MmlPatientsController < ApplicationController
   before_action :set_mml_patient, only: [:show] # :edit, :update, :destroy]
 
   def index
+    @title = 'Patient list'
     @mml_patients = MMLPatient.all
   end
 
   def show
+    @title = @mml_patient.name
     respond_to do |format|
       format.html
       format.json
