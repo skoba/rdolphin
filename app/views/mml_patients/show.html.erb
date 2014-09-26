@@ -9,7 +9,7 @@
  <h3>Profile</h3>
  <div class="profile">
  <b>Local ID:</b> <%= @mml_patient.other_ids.first.identity_details.first.value %><br />
- <b>氏名:</b> <%= @mml_patient.person_name.first.identity_details.where(name: 'family name').first.value %> <%= @mml_patient.person_name.first.identity_details.where(name: 'given name').first.value %><br />
+ <b>氏名:</b> <%= @mml_patient.erson_name.first.identity_details.where(name: 'family name').first.value %> <%= @mml_patient.first_name %><br />
  <b>生年月日:</b> <%= @mml_patient.birthday %><br />
  <b>性別:</b> <%= @mml_patient.sex %><br />
  </div>

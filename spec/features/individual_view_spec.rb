@@ -5,6 +5,8 @@ feature 'Individual view' do
       visit mml_patient_path person
 
       expect(page).to have_title person.name
+      expect(page).to have_content person.birthday
+      expect(page).to have_content person.gender
     end
   end
 end

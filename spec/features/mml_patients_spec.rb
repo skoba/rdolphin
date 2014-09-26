@@ -12,8 +12,11 @@ feature 'patients list view' do
     expect(page).to have_content 'List - MML Patient Module'
     expect(page).to have_content 'ID'
     expect(page).to have_content "姓"
+    expect(page).to have_content 'KOBAYASHI'
     expect(page).to have_content "名"
+    expect(page).to have_content 'Shinji'
     expect(page).to have_content "生年月日"
+    expect(page).to have_content '1990-01-01'
     expect(page).to have_content "性別"
   end
 end
