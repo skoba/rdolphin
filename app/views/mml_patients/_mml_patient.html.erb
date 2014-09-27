@@ -1,7 +1,7 @@
 <tr>
   <td><%= mml_patient.id %></td>
-  <td><%= mml_patient.person_name.first.identity_details.where(name: 'family name').first.value %></td>
-  <td><%= mml_patient.person_name.first.identity_details.where(name: 'given name').first.value %></td>
+  <td><%= mml_patient.family_name %></td>
+  <td><%= mml_patient.first_name %></td>
   <td><%= mml_patient.birthday %></td>
   <td><%= mml_patient.sex %></td>
   <td><%= link_to '閲覧', mml_patient %></td>

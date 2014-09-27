@@ -14,19 +14,19 @@ xml.mmlPi(:PatientModule,{
       xml.mmlCm :Id, 'mmlCm:type' => "local", 'mmlCm:tableId'=>"MML0024" do
         @mml_patient.master_id
       end
-      @mml_patient.other_ids do |id|
+      @mml_patient.other_ids do |issuer, id|
         xml.mmlCm :Id, 'mmlCm:type' => 'facility', 'mmlCm:tableId'=>"MML0024" do
-          id.identity_details.first.value
+	  id
         end
       end
 
       xml.mmlPi :personName do
-        @mml_patient.person_name.each do |name|
+#        @mml_patient.person_name.each do |name|
           xml.mmlNm :Name do #('mmlNm:repCode'=>"A") do
-            xml.mmlNm :family, @mml_patient.person_name.first.identity_details.where(name: 'family name').first.value 
-            xml.mmlNm :given, @mml_patient.person_name.first.identity_details.where(name: 'given name').first.value
+            xml.mmlNm :familyName, @mml_patient.family_name
+            xml.mmlNm :firstName, @mml_patient.first_name
           end
-        end
+#        end
       end
       xml.mmlPi :birthday, @mml_patient.birthday if @mml_patient.birthday
       xml.mmlPi :sex, @mml_patient.sex if @mml_patient.sex
