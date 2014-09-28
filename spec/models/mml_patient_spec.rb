@@ -50,8 +50,8 @@ RSpec.describe MMLPatient, :type => :model do
       expect(mml_patient.contacts).to have(2).items
     end
 
-    it 'has 2 postal addresses' do
-      expect(mml_patient.postal_addresses).to have(2).items
+    it 'has 1 postal addresses' do
+      expect(mml_patient.postal_addresses).to have(1).item
     end
 
     it 'has 1 phone' do
