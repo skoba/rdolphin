@@ -113,9 +113,11 @@ class MMLPatient < Person
   end
 
   def postal_addresses=(addresses)
-    self.addresses.
-      build(meaning: 'postal address', name: 'home').
-      address_details.build(addresses)
+    addresses.each do |name, details|
+      self.contacts.build(name: name).addresses.
+        build(meaning: 'postal address', name: name).
+        address_details.build(details.map {|k,v| {name: k, value: v}})
+    end
   end
 
   def phones
@@ -123,8 +125,10 @@ class MMLPatient < Person
   end
 
   def phones=(phones)
-    self.contacts.buildaddresses.
-      build(meaning: 'Telecoms', name: 'Work').
-      address_details.build(phones.map {|k,v| {name: k, value: v} })
+    phones.each do |name, details|
+      self.contacts.build(name: name).addresses.
+        build(meaning: 'telecom address', name: 'phone').
+        address_details.build(details.map {|k,v| {name: k, value: v} })
+    end
   end
 end
