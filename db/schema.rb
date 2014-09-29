@@ -67,28 +67,20 @@ ActiveRecord::Schema.define(version: 20140902163416) do
   add_index "contacts", ["party_id", "party_type"], name: "index_contacts_on_party_id_and_party_type", using: :btree
 
   create_table "content_items", force: true do |t|
-    t.integer  "composition_id"
     t.string   "name"
-    t.string   "node"
-    t.string   "path"
+    t.string   "archetypeid"
     t.string   "rm_type"
+    t.string   "nodeid"
+    t.string   "path"
+    t.integer  "composition_id"
+    t.integer  "content_item_id"
+    t.string   "content_item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
-
-  create_table "contents", force: true do |t|
-    t.string   "name"
-    t.string   "archetypeid"
-    t.string   "nodeid"
-    t.string   "path"
-    t.integer  "content_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "contents", ["content_id"], name: "index_contents_on_content_id", using: :btree
+  add_index "content_items", ["content_item_id", "content_item_type"], name: "index_content_items_on_content_item_id_and_content_item_type", using: :btree
 
   create_table "data_values", force: true do |t|
     t.boolean  "bool_value"

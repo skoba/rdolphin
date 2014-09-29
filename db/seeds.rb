@@ -214,7 +214,7 @@ FactoryGirl.define do
   factory :dummy_ehr, class: Ehr do
     system_id 'rDolphin'
     after(:create) do |ehr|
-      10.times { create :dummy_composition, ehr: ehr}
+      50.times { create :dummy_composition, ehr: ehr}
     end
   end
 
