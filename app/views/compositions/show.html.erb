@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <b>ID:</b> <%= @composition.ehr.person.master_id %>
+    </div>
+    <div class="col-md-4">
+      <b>氏名:</b> <%= @composition.ehr.person.family_name %><%= @composition.ehr.person.first_name %>
+    </div>
+    <div class="col-md-3">
+      <b>生年月日:</b> <%= @composition.ehr.person.birthday %>
+    </div>
+    <div class="2">
+      <b>性別:</b> <%= @composition.ehr.person.sex %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <b>文書種別:</b> <%= @composition.name %>
+    </div>
+    <div class="col-md-3">
+      <b>登録ID:</b> <%= @composition.uid %>      
+    </div>
+    <div class="col-md-6">
+      <b>登録日時:</b> <%= @composition.created_at %>            
+    </div>
+  </div>
+</div>
+<%=  render "#{@composition.partial}" %>

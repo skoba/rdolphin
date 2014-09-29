@@ -39,8 +39,14 @@ ActiveRecord::Schema.define(version: 20140902163416) do
   add_index "addresses", ["contact_id", "contact_type"], name: "index_addresses_on_contact_id_and_contact_type", using: :btree
 
   create_table "compositions", force: true do |t|
-    t.integer  "ehr_id"
     t.string   "category"
+    t.string   "name"
+    t.string   "nodeid"
+    t.string   "uid"
+    t.string   "archetypeid"
+    t.string   "templateid"
+    t.string   "rm_version"
+    t.integer  "ehr_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -58,4 +58,12 @@ RSpec.describe MMLPatient, :type => :model do
       expect(mml_patient.phones).to have(1).item
     end
   end
+
+  describe "Ehr" do
+    it 'has 1 ehr' do
+      expect(mml_patient).to have_one :ehr
+    end
+
+    
+  end
 end

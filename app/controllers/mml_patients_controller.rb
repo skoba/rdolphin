@@ -7,7 +7,8 @@ class MmlPatientsController < ApplicationController
   end
 
   def show
-    @title = @mml_patient.name
+    @title = "#{@mml_patient.family_name}#{@mml_patient.first_name}"
+    @compositions = @mml_patient.ehr.compositions
     respond_to do |format|
       format.html
       format.json

@@ -37,3 +37,14 @@ gem 'rails-erd', group: :development
 gem "spring-commands-rspec", group: [:development, :test]
 gem 'shoulda-matchers', group: :test
 
+# # For *BSD
+# require 'rbconfig'
+
+# if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/i
+#   gem 'rb-kqueue', '>= 0.2'
+  
+#   # Base versions have known conflicts/bugs
+#   # Even master branches may not work...
+#   gem 'ffi', git: 'https://github.com/carpetsmoker/ffi', ref: 'ac63e07f7'
+#   gem 'celluloid', git: 'https://github.com/celluloid/celluloid', ref: '7fdef04'
+# end

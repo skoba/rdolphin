@@ -1,22 +1,30 @@
 <div class="container">
  <div class="row">
- <div class="col-md-4">
- <h3>Identifiers</h3>
- <div class="identity">
- <b>Global ID Issuer:</b><%= @mml_patient.party_identities.where(name: 'regional id').first.purpose %><br />
- <b>ID:</b> <%= @mml_patient.master_id %><br />
- </div>
- <h3>Profile</h3>
- <div class="profile">
- <% @mml_patient.other_ids.each do |issuer, id| %>
- <b>Issuer:</b> <%= issuer %><br />
- <b>Local ID:</b> <%= id %><br />
+  <div class="col-md-3">
+   <h3>Identifiers</h3>
+  </div>
+  <div class="col-md-3">
+    <h3>Profile</h3>
+  </div>
+  <div class="col-md-6">
+    <h3>Contacts</h3>
+  </div>
+ </div> 
+ <div class="row">
+  <div class="col-md-3">
+    <b>Global ID Issuer:</b>Maiko Network<br />
+    <b>Global ID:</b> <%= @mml_patient.master_id %><br />
+  <% @mml_patient.other_ids.each do |id| %>
+   <b>Issuer:</b> <%= id[:issuer] %><br />
+   <b>Local ID:</b> <%= id[:id] %><br />
  <% end %>
- <b>氏名:</b> <%= @mml_patient.family_name %> <%= @mml_patient.first_name %><br />
- <b>生年月日:</b> <%= @mml_patient.birthday %><br />
- <b>性別:</b> <%= @mml_patient.sex %><br />
+  </div>
+  <div class="col-md-3">
+   <b>氏名:</b> <%= @mml_patient.family_name %> <%= @mml_patient.first_name %><br />
+   <b>生年月日:</b> <%= @mml_patient.birthday %><br />
+   <b>性別:</b> <%= @mml_patient.sex %><br />
  </div>
- <h3>Address</h3>
+ <div class="col-md-3">
  <% @mml_patient.postal_addresses.each do |address| %>
  <address>
  <b>住所種別：</b> <%= address.name %><br />
@@ -24,13 +32,22 @@
 <br />
  </address>
  <% end %>
- <h3>Telecoms</h3>
- <% @mml_patient.phones.each do |phone| %>
- <div class="telecom">
- <b>Type:</b> <%= phone.meaning %><br />
- <b>Phone Number:</b> <% phone.address_details.each do |phone| %><%= phone.value %><% end %><br />
  </div>
+ <div class="col-md-3">
+ <% @mml_patient.phones.each do |phone| %>
+ <b>電話種別:</b> <%= phone.meaning %><br />
+ <b>Phone Number:</b> <% phone.address_details.each do |phone| %><%= phone.value %><% end %><br />
  <% end %>
  </div>
+ <table class="table table-striped table-bordered">
+  <thead>
+   <th>作成日時</th>
+   <th>文書種別</th>
+   <th></th>
+  </thead>
+  <tbody>
+   <%= render partial: "composition", collection: @compositions %>   
+  </tbody>
+ </table>
 </div>
 <%= link_to 'MML', mml_patient_path(format: :xml) %> |<%= link_to '戻る', mml_patients_path %>

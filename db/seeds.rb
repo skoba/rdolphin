@@ -13,6 +13,7 @@ FactoryGirl.define do
       create :dummy_home_contact, party: person
       create :dummy_work_contact, party: person
       create :dummy_details_in_general, party: person
+      create :dummy_ehr, person: person
     end
   end
 
@@ -208,6 +209,23 @@ FactoryGirl.define do
     name 'nationality'
     value {Faker::Address.country}
     association :party_detail, factory: :dummy_details_in_general
+  end
+
+  factory :dummy_ehr, class: Ehr do
+    system_id 'rDolphin'
+    after(:create) do |ehr|
+      10.times { create :dummy_composition, ehr: ehr}
+    end
+  end
+
+  factory :dummy_composition, class: Composition do
+    category "persistent"
+    name {['MML Lab test', 'MML Report', 'MML Summary'].sample}
+    nodeid 'at0000'
+    uid {SecureRandom.uuid}
+    archetypeid 'openEHR-EHR-COMPOSITION.report.v1'
+#    templateid 'MML Lab Test'
+    rm_version '1.0.2'
   end
 end
 

@@ -7,6 +7,7 @@ feature 'Individual view' do
       expect(page).to have_title person.name
       expect(page).to have_content person.birthday
       expect(page).to have_content person.sex
+      expect(page).to have_content 'Laboratory Test'
     end
   end
 end

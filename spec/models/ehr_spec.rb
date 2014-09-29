@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Ehr, :type => :model do
   it {is_expected.to belong_to :person}
   it {is_expected.to have_many :versions}
+  it {is_expected.to have_many :compositions}
 
   let(:ehr) {build :ehr}
 

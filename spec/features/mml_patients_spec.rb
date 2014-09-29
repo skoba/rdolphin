@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 feature 'patients list view' do
   background do
-    create_list :person, 10
+    FactoryGirl.create_list :person, 10
   end
 
   scenario 'visit root path' do
@@ -18,5 +18,6 @@ feature 'patients list view' do
     expect(page).to have_content "生年月日"
     expect(page).to have_content '1990-01-01'
     expect(page).to have_content "性別"
+    expect(page).to have_content 'male'
   end
 end
