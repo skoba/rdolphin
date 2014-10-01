@@ -226,6 +226,48 @@ FactoryGirl.define do
     archetypeid 'openEHR-EHR-COMPOSITION.report.v1'
 #    templateid 'MML Lab Test'
     rm_version '1.0.2'
+    after(:create) do |composition|
+      10.times {create :dummy_observation, composition: composition}
+    end
+  end
+
+  factory :dummy_observation, class: Observation do
+    name "Laboratory test"
+    archetypeid "openEHR-EHR-OBSERVATION.lab_test.v1"
+    rm_type "OBSERVATION"
+    nodeid ""
+    path "[openEHR-EHR-COMPOSITION.report-result.v1]/content[openEHR-EHR-OBSERVATION.lab_test.v1]"
+    after(:create) do |obs|
+      create :dummy_test_name, content_item: obs
+      create :dummy_test_result, content_item: obs
+    end
+  end
+
+  factory :dummy_test_name, class: Element do
+    name 'Test name'
+    archetypeid 'openEHR-EHR-OBSERVATION.lab_test.v1'
+    rm_type 'OBSERVATION'
+    nodeid 'at0005'
+    path '[openEHR-EHR-COMPOSITION.report-result.v1]/content[openEHR-EHR-OBSERVATION.lab_test.v1]/data[at0001]/events[at0002]/data[at0003/items[at0005]/value'
+    after(:create) {|elem| create :dummy_test_name_value, item: elem}
+  end
+  
+  factory :dummy_test_name_value, class: DvText do
+    value {%w(WBC Hb Plt LDH T-Bil D-Bil T-Prot Alb).sample}
+  end
+
+  factory :dummy_test_result, class: Element do
+    name 'Result'
+    archetypeid 'openEHR-EHR-OBSERVATION.lab_test.v1'
+    rm_type 'OBSERVATION'
+    nodeid 'at0078'
+    path '[openEHR-EHR-COMPOSITION.report-result.v1]/content[openEHR-EHR-OBSERVATION.lab_test.v1]/data[at0001]/events[at0002]/data[at0003/items[at0078]/value'
+    after(:create) {|elem| create :dummy_test_value, item: elem}
+  end
+
+  factory :dummy_test_value, class: DvQuantity do
+    value {Random.rand(1..1000)}
+    unit {%w(/microl mg/dl IU/l).sample}
   end
 end
 

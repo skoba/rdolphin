@@ -9,7 +9,6 @@ FactoryGirl.define do
     date_value "2014-08-06"
     date_time_value "2014-08-06T12:13:33"
     code "C089"
-    element
   end
 
   factory :dv_boolean do

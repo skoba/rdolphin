@@ -2,6 +2,12 @@ class CompositionsController < ApplicationController
   before_action :set_composition, only: [:show] 
 
   def show
+    @title = 'Test result'
+    respond_to do |format|
+      format.html
+      format.json
+      format.xml
+    end
   end
 
   private

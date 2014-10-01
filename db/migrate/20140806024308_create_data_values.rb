@@ -10,7 +10,7 @@ class CreateDataValues < ActiveRecord::Migration
       t.date :date_value
       t.datetime :date_time_value
       t.string :code
-      t.references :element, index: true
+      t.references :item, index: true, polymorphic: true
 
       t.timestamps
     end

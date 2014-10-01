@@ -26,3 +26,4 @@
   </div>
 </div>
 <%=  render "#{@composition.partial}" %>
+<%= link_to 'MML', composition_path(format: :xml) %> |<%= link_to '戻る', mml_patients_path %>

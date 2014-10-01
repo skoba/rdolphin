@@ -1,0 +1,16 @@
+<table class="table table-striped table-bordered">
+ <thead>
+  <tr>
+    <th>項目名称</th>
+    <th>数値</th>
+    <th>単位</th>
+  </tr>
+ </thead>
+  <% @composition.content_items.each do |content_item| %>
+  <tr>
+    <td><%= content_item.items.find_by(nodeid: 'at0005').data_value.text_value %></td>
+    <td><%= content_item.items.find_by(nodeid: 'at0078').data_value.decimal_value %></td>
+    <td><%= content_item.items.find_by(nodeid: 'at0078').data_value.unit %></td>
+  </tr>
+  <% end %>
+</table>

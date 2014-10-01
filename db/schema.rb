@@ -92,12 +92,13 @@ ActiveRecord::Schema.define(version: 20140902163416) do
     t.date     "date_value"
     t.datetime "date_time_value"
     t.string   "code"
-    t.integer  "element_id"
+    t.integer  "item_id"
+    t.string   "item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "data_values", ["element_id"], name: "index_data_values_on_element_id", using: :btree
+  add_index "data_values", ["item_id", "item_type"], name: "index_data_values_on_item_id_and_item_type", using: :btree
 
   create_table "detail_items", force: true do |t|
     t.string   "name"
@@ -130,6 +131,7 @@ ActiveRecord::Schema.define(version: 20140902163416) do
 
   create_table "items", force: true do |t|
     t.string   "name"
+    t.string   "rm_type"
     t.string   "archetypeid"
     t.string   "nodeid"
     t.string   "path"
