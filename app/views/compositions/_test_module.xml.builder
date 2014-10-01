@@ -12,8 +12,8 @@ xml.mmlLb(:TestModule, {
             'xsi:schemaLocation' => "http://www.medxml.net/MML/ContentModule/TestModule/1.0"}) do
   xml.mmlLb :registId, @composition.uid
   xml.mmlLb :labTest do
-    xml.mmlLb :item do
-      @composition.content_items.each do |content_item|
+    @composition.content_items.each do |content_item|
+      xml.mmlLb :item do
         xml.mmlLb :itemName, content_item.items.find_by(nodeid: 'at0005').data_value.text_value
         xml.mmlLb :numValue, content_item.items.find_by(nodeid: 'at0078').data_value.decimal_value
         xml.mmlLb :unit, content_item.items.find_by(nodeid: 'at0078').data_value.unit
