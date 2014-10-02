@@ -11,12 +11,12 @@ gem 'jbuilder'
 gem 'enumerize'
 gem 'sdoc',  group: :doc
 gem 'spring', group: [:development, :test]
+gem 'mml-ruby'
 
 # gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 # gem 'debugger', group: [:development, :test]
-
 gem 'pry-rails', group: :development
 gem 'bootstrap-sass'
 gem 'database_cleaner', group: :test

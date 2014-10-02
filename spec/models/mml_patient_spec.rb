@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'mml'
 
 RSpec.describe MMLPatient, :type => :model do
   let(:mml_patient) { create :mml_patient }
@@ -65,10 +66,10 @@ RSpec.describe MMLPatient, :type => :model do
     end
   end
 
-  context '#to_mml' do
-    let(:mml) {mml_patient.to_mml}
-    subject {mml}
+  # context '#to_mml' do
+  #   let(:mml) {mml_patient.to_mml}
+  #   subject {mml}
 
-    it {is_expected.to be_an_instance_of MML::PatientInfo}
-  end
+  #   it {is_expected.to be_an_instance_of MML::PatientInfo}
+  # end
 end

@@ -1,3 +1,5 @@
+require 'mml'
+
 class MMLPatient < Person
   after_save do
     self.party_identities.each do |identity|
@@ -30,11 +32,9 @@ class MMLPatient < Person
     end
   end
 
-
   def first_name=(first_name)
     person_name.identity_details.build(name: 'given name', value: first_name)
   end
-
 
   def family_name=(family_name)
     person_name.identity_details.build(name: 'family name', value: family_name)
@@ -45,15 +45,33 @@ class MMLPatient < Person
       build(name: 'given name', value: given_name)
   end
 
+  # def person_name
+  #   self.party_identities.where(name: 'person name').map do |party_identity|
+  #     MML::Name.new(repCode: 'A',
+  #                   fullname: party_identity.identity_details.find_by(name: 'full name').value,
+  #                   family: party_identity.identity_details.find_by(name: 'family name').value,
+  #                   given: party_identity.identity_details.find_by(name: 'given name').value,
+  #                   middle: party_identity.identity_details.find_by(name: 'middle name').value,
+  #                   prefix: party_identity.identity_details.find_by(name: 'title').value)      
+  #   end
+  # end
+
   def details_general
     @details_general ||= self.party_details.build(name: 'general')
   end
 
+  def birthday
+    Date.parse details_general.detail_items.find_by(name: 'birthday').value
+  end
 
   def birthday=(birthday)
     bd = Date.parse(birthday)
     details_general.detail_items.build(name: 'birthday', value: bd)
   end
+
+  # def sex
+  #   details_general.detail_items.find_by('gender').value
+  # end
 
   def sex=(sex)
     details_general.detail_items.build(name: 'gender', value: sex)
