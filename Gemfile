@@ -23,7 +23,7 @@ gem 'database_cleaner', group: :test
 gem 'launchy', group: :test
 gem 'factory_girl_rails'
 gem 'ffaker'
-gem 'draw_erd', group: :development
+gem 'draw_erd' #, group: :development
 gem 'rails_layout', group:  [:development, :test]
 gem 'rspec', group: [:development, :test]
 gem 'rspec-rails', group: [:development, :test]
