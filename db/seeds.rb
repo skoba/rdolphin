@@ -214,7 +214,7 @@ FactoryGirl.define do
   factory :dummy_ehr, class: Ehr do
     system_id 'rDolphin'
     after(:create) do |ehr|
-      50.times { create :dummy_composition, ehr: ehr}
+      20.times { create :dummy_composition, ehr: ehr}
     end
   end
 
@@ -227,7 +227,7 @@ FactoryGirl.define do
 #    templateid 'MML Lab Test'
     rm_version '1.0.2'
     after(:create) do |composition|
-      10.times {create :dummy_observation, composition: composition}
+      5.times {create :dummy_observation, composition: composition}
     end
   end
 
@@ -271,6 +271,6 @@ FactoryGirl.define do
   end
 end
 
-100.times do
+20.times do
   FactoryGirl.create :dummy_person
 end
