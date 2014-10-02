@@ -1,5 +1,3 @@
-require 'mml-ruby'
-
 class MMLPatient < Person
   after_save do
     self.party_identities.each do |identity|
@@ -60,9 +58,9 @@ class MMLPatient < Person
     @details_general ||= self.party_details.build(name: 'general')
   end
 
-  def birthday
-    Date.parse details_general.detail_items.find_by(name: 'birthday').value
-  end
+  # def birthday
+  #   Date.parse details_general.detail_items.find_by(name: 'birthday').value
+  # end
 
   def birthday=(birthday)
     bd = Date.parse(birthday)
