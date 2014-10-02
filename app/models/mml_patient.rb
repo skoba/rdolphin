@@ -1,4 +1,4 @@
-require 'mml'
+require 'mml-ruby'
 
 class MMLPatient < Person
   after_save do
