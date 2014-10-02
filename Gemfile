@@ -13,6 +13,7 @@ gem 'enumerize'
 gem 'sdoc',  group: :doc
 gem 'spring', group: [:development, :test]
 gem 'mml-ruby'
+gem 'rails_12factor', group: :production
 
 # gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'

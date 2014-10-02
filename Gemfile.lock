@@ -141,7 +141,12 @@ GEM
       activesupport (>= 3.0)
       choice (~> 0.1.6)
       ruby-graphviz (~> 1.0.4)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_layout (1.0.22)
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.1.6)
       actionpack (= 4.1.6)
       activesupport (= 4.1.6)
@@ -245,6 +250,7 @@ DEPENDENCIES
   pry-rails
   rails
   rails-erd
+  rails_12factor
   rails_layout
   rspec
   rspec-collection_matchers
