@@ -104,4 +104,8 @@ class MMLPatient < Person
         address_details.build(details.map {|k,v| {name: k, value: v} })
     end
   end
+
+  def to_mml
+    MML::Patient.info.new(masterId: masterId, birthday: birthday, sex: sex, nationality: nationality, marital: marital)
+  end
 end

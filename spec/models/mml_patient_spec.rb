@@ -63,7 +63,12 @@ RSpec.describe MMLPatient, :type => :model do
     it 'has 1 ehr' do
       expect(mml_patient).to have_one :ehr
     end
+  end
 
-    
+  context '#to_mml' do
+    let(:mml) {mml_patient.to_mml}
+    subject {mml}
+
+    it {is_expected.to be_an_instance_of MML::PatientInfo}
   end
 end
