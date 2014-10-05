@@ -269,6 +269,10 @@ FactoryGirl.define do
     value {Random.rand(1..1000)}
     unit {%w(/microl mg/dl IU/l).sample}
   end
+
+  factory :dummy_report, class: DvText do
+    
+  end
 end
 
 10.times do
