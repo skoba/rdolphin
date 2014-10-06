@@ -38,7 +38,7 @@ RSpec.describe MMLPatient, :type => :model do
     expect(mml_patient.birthday).to eq Date.parse('1970-04-19')
   end
 
-  it 'natilality is Japan' do
+  it 'nationality is Japan' do
     expect(mml_patient.nationality).to eq 'Japan'
   end
 

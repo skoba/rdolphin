@@ -214,7 +214,7 @@ FactoryGirl.define do
   factory :dummy_ehr, class: Ehr do
     system_id 'rDolphin'
     after(:create) do |ehr|
-      20.times { create :dummy_composition, ehr: ehr}
+      10.times { create :dummy_composition, ehr: ehr}
     end
   end
 
@@ -269,8 +269,12 @@ FactoryGirl.define do
     value {Random.rand(1..1000)}
     unit {%w(/microl mg/dl IU/l).sample}
   end
+
+  factory :dummy_report, class: DvText do
+    
+  end
 end
 
-20.times do
+10.times do
   FactoryGirl.create :dummy_person
 end
