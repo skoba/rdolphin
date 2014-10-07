@@ -2,9 +2,9 @@ require 'mml'
 
 FactoryGirl.define do
   factory :mml_patient, class: MMLPatient do
-    master_id 'abcdefg'
-    other_ids 'Kyoto university hospital' => '012345'
-    name [{first: 'Shinji', family: 'KOBAYASHI' }]
+    master_id MML::Id.new(value: 'abcdefg', type: 'facility')
+    other_ids ['Kyoto university hospital' => '012345']
+    name [MML::Name.new(family: "KOBAYASHI", given: "Shinji")]
     birthday '1970-04-19'
     sex 'male'
     nationality 'Japan'
