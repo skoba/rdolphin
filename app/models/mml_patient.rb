@@ -1,3 +1,5 @@
+require 'mml'
+
 class MMLPatient < Person
   after_save do
     self.party_identities.each do |identity|
@@ -14,8 +16,12 @@ class MMLPatient < Person
     end
   end
 
+  def master_id
+    MML::Id.new(value: super)
+  end
+
   def master_id=(master_id)
-    self.party_identities.build(name: 'regional id').identity_details.build(name: 'maiko id', value: master_id)
+    self.party_identities.build(name: 'regional id').identity_details.build(name: 'maiko id', value: master_id.value)
   end
 
   def other_ids
@@ -41,6 +47,15 @@ class MMLPatient < Person
   def given_name=(given_name)
     person_name.identity_details.
       build(name: 'given name', value: given_name)
+  end
+
+  def name
+    self.party_identities.where(name: 'person name').map do |identity|
+      family_name = identity.identity_details.find_by(name: 'family name').exists? ? identity.identity_details.find_by(name: 'family name').value : nil
+      given_name = identity.identity_details.find_by(name: 'given name').exists? ? identity.identity_details.find_by(name: 'given name').value : nil
+      full_name = identity.identity_details.find_by(name: 'full name').exists? ? identity.identity_details.find_by(name: 'full name').value : nil
+      MML::Name.new(family_name: family_name, given_name: given_name, full_name: full_name)
+    end
   end
 
   # def person_name
