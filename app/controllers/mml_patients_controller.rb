@@ -10,9 +10,10 @@ class MmlPatientsController < ApplicationController
     @title = "#{@mml_patient.family_name}#{@mml_patient.first_name}"
     @compositions = @mml_patient.ehr.compositions
     respond_to do |format|
-      format.html
+      format.html {render html: @mml_patient}
       format.json
       format.xml
+      format.any {render :html}
     end
   end
 

@@ -18,7 +18,7 @@
 
 
 #guard 'spring', :rspec_cli => '--color' do
-guard :rspec, cmd: 'spring rspec --color' do
+guard :rspec, cmd: 'spring rspec --color', all_after_pass: true, all_on_start: true do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^spec/spec_helper\.rb$})                   { |m| 'spec' }
   watch('spec/rails_helper.rb')                       { "spec" }

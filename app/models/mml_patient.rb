@@ -31,8 +31,10 @@ class MMLPatient < Person
   end
 
   def other_ids=(ids)
-    ids.each do |k, v|
-      self.party_identities.build(name: 'local id', purpose: k).identity_details.build(name: 'id', value: v)
+    ids.each do |id|
+      id.each do |k, v|
+        self.party_identities.build(name: 'local id', purpose: k).identity_details.build(name: 'id', value: v)
+      end
     end
   end
 
