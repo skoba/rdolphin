@@ -3,6 +3,6 @@ class Composition < ActiveRecord::Base
   has_many :content_items
 
   def partial
-    "#{self.name.downcase.tr(' ', '_')}"
+    "#{name.downcase.tr(' ', '_')}"
   end
 end

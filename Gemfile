@@ -34,19 +34,17 @@ gem 'poltergeist', group: [:development, :test]
 gem 'rspec-collection_matchers', group: [:development, :test]
 gem 'guard-spring', group: [:development, :test]
 gem 'guard-rspec', group:  [:development, :test]
+gem 'guard-rails', group:  [:development, :test]
 gem 'libnotify', group:  [:development, :test]
 gem 'rails-erd', group: :development
 gem "spring-commands-rspec", group: [:development, :test]
 gem 'shoulda-matchers', group: :test
+gem 'guard-livereload', group: :development, require: false
+gem 'rubocop', group: :development, require: false
+gem 'guard-rubocop', group: [:development, :test]
 
-# # For *BSD
-# require 'rbconfig'
+require 'rbconfig'
+if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/
+  gem 'rb-kqueue', '>= 0.2'
+end
 
-# if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/i
-#   gem 'rb-kqueue', '>= 0.2'
-  
-#   # Base versions have known conflicts/bugs
-#   # Even master branches may not work...
-#   gem 'ffi', git: 'https://github.com/carpetsmoker/ffi', ref: 'ac63e07f7'
-#   gem 'celluloid', git: 'https://github.com/celluloid/celluloid', ref: '7fdef04'
-# end

@@ -11,17 +11,6 @@ RSpec.describe Item, :type => :model do
     end
   end
 
-  describe Element do
-    let(:element) {build :element}
-    subject {element}
-
-    it {is_expected.to be_valid}
-
-    context 'association' do
-      it {is_expected.to have_one :data_value}
-    end
-  end
-
   describe Cluster do
     let(:cluster) {create :cluster}
     subject {cluster}

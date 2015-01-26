@@ -7,7 +7,7 @@ RSpec.describe Composition, :type => :model do
   it {is_expected.to belong_to :ehr}
   it {is_expected.to have_many :content_items}
 
-  let (:composition) {build :composition}
+  let(:composition) {build :composition}
 
   specify 'category is persisitent' do
     expect(composition.category).to eq 'persistent'
