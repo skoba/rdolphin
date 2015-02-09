@@ -1,0 +1,17 @@
+# .rubocop.yml
+inherit_from: .rubocop_todo.yml
+
+Style/RedundantSelf:
+  Enabled: true
+
+Lint/HandleExceptions:
+  Enabled: false
+
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 15
+
+
+  

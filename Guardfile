@@ -1,34 +1,66 @@
-# guard :rspec, cmd: 'bundle exec rspec' do
-#   watch(%r{^spec/.+_spec\.rb$})
-#   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
-#   watch('spec/spec_helper.rb')  { "spec" }
+guard 'rails' do
+  watch('Gemfile.lock')
+  watch(%r{^(config|lib)/.*})
+end
 
-#   # Rails example
-#   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
-#   watch(%r{^app/(.*)(\.erb|\.haml|\.slim)$})          { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-#   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
-#   watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
-#   watch('config/routes.rb')                           { "spec/routing" }
-#   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
-#   watch('spec/rails_helper.rb')                       { "spec" }
+ignore! %r{\.#.+}
+guard :rspec, all_after_pass:true, all_on_start: true, cmd: "bin/rspec" do
+  require "guard/rspec/dsl"
+  dsl = Guard::RSpec::Dsl.new(self)
 
-#   # Capybara features specs
-#   watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/features/#{m[1]}_spec.rb" }
-# end
+  # Feel free to open issues for suggestions and improvements
 
+  # RSpec files
+  rspec = dsl.rspec
+  watch(rspec.spec_helper) { rspec.spec_dir }
+  watch(rspec.spec_support) { rspec.spec_dir }
+  watch(rspec.spec_files)
 
-#guard 'spring', :rspec_cli => '--color' do
-guard :rspec, cmd: 'spring rspec --color', all_after_pass: true, all_on_start: true do
-  watch(%r{^spec/.+_spec\.rb$})
-  watch(%r{^spec/spec_helper\.rb$})                   { |m| 'spec' }
-  watch('spec/rails_helper.rb')                       { "spec" }
-  watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
-  watch(%r{^app/(.*)(\.erb|\.haml|\.slim)$})          { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-  watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
-  watch(%r{^app/controllers/(.+)_(controller)\.rb$})  do |m|
-    %W(spec/routing/#{m[1]}_routing_spec.rb spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb spec/requests/#{m[1]}_spec.rb)
+  # Ruby files
+  ruby = dsl.ruby
+  dsl.watch_spec_files_for(ruby.lib_files)
+
+  # ignore emacs lockfile
+  #ignore! %r{^\.\#.*}
+  
+  # Rails files
+  rails = dsl.rails(view_extensions: %w(erb haml slim))
+  dsl.watch_spec_files_for(rails.app_files)
+  dsl.watch_spec_files_for(rails.views)
+
+  watch(rails.controllers) do |m|
+    [
+      rspec.spec.("routing/#{m[1]}_routing"),
+      rspec.spec.("controllers/#{m[1]}_controller"),
+      rspec.spec.("acceptance/#{m[1]}")
+    ]
   end
-  watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
-  watch('config/routes.rb')                           { "spec/routing" }
-  watch('app/controllers/application_controller.rb')  { "spec/controllers" }
+
+  # Rails config changes
+  watch(rails.spec_helper)     { rspec.spec_dir }
+  watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
+  watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
+
+  # Capybara features specs
+  watch(rails.view_dirs)     { |m| rspec.spec.("features/#{m[1]}") }
+
+  # # Turnip features and steps
+  # watch(%r{^spec/acceptance/(.+)\.feature$})
+  # watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
+  #   Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
+  # end
+end
+
+guard 'livereload' do
+  watch(%r{app/views/.+\.(erb|haml|slim)$})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+  # Rails Assets Pipeline
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+end
+
+guard :rubocop do
+  watch(%r{.+\.rb$})
+  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
