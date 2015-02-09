@@ -10,4 +10,8 @@ Lint/HandleExceptions:
 Lint/ParenthesesAsGroupedExpression:
   Enabled: true
 
+Metrics/AbcSize:
+  Max: 15
+
+
   

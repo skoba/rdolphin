@@ -53,23 +53,12 @@ class MMLPatient < Person
 
   def name
     party_identities.where(name: 'person name').map do |identity|
-      family_name = identity.identity_details.find_by(name: 'family name').exists? ? identity.identity_details.find_by(name: 'family name').value : nil
-      given_name = identity.identity_details.find_by(name: 'given name').exists? ? identity.identity_details.find_by(name: 'given name').value : nil
-      full_name = identity.identity_details.find_by(name: 'full name').exists? ? identity.identity_details.find_by(name: 'full name').value : nil
+      family_name = family_name(identity)
+      given_name = given_name('given name')
+      full_name = find_name_by_type('full name')
       MML::Name.new(family_name: family_name, given_name: given_name, full_name: full_name)
     end
   end
-
-  # def person_name
-  #   self.party_identities.where(name: 'person name').map do |party_identity|
-  #     MML::Name.new(repCode: 'A',
-  #                   fullname: party_identity.identity_details.find_by(name: 'full name').value,
-  #                   family: party_identity.identity_details.find_by(name: 'family name').value,
-  #                   given: party_identity.identity_details.find_by(name: 'given name').value,
-  #                   middle: party_identity.identity_details.find_by(name: 'middle name').value,
-  #                   prefix: party_identity.identity_details.find_by(name: 'title').value)      
-  #   end
-  # end
 
   def details_general
     @details_general ||= party_details.build(name: 'general')
@@ -136,6 +125,18 @@ class MMLPatient < Person
         build(meaning: 'telecom address', name: 'phone').
         address_details.build(details.map {|k,v| {name: k, value: v} })
     end
+  end
+
+  def family_name(identity)
+    find_name_by_type(identity, 'family name')
+  end
+
+  def find_name_by_type(identity, type)
+    confirm_name_by_type(type).exist? ? confirm_name_by_type(type).value : nil
+  end
+
+  def confirm_namename_by_type(type)
+    identity.identity_details.find_by(name: type).exist?
   end
 
   def to_mml
