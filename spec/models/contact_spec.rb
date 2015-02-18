@@ -23,4 +23,12 @@ RSpec.describe Contact, :type => :model do
   it 'is valid to' do
     expect(contact.valid_to).to eq Date.parse('2015-09-01')
   end
+
+  describe 'validate time' do
+    context 'valid dates' do
+      it 'is valid at 2014-10-10' do
+        expect(contact).to be_valid Date.parse('2015-10-10')
+      end
+    end
+  end
 end

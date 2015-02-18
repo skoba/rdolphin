@@ -1,6 +1,10 @@
 class CompositionsController < ApplicationController
   before_action :set_composition, only: [:show] 
 
+  def index
+    @compositions = Composition.all
+  end
+
   def show
     @title = 'Test result'
     respond_to do |format|
@@ -18,5 +22,4 @@ class CompositionsController < ApplicationController
     def composition_params
       params.require(:composition).permit(:id)
     end
-
 end
