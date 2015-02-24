@@ -5,6 +5,5 @@ class CreateItemProxies < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :item_proxies, :items
   end
 end

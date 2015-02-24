@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.0'
 #ruby '2.1.5'
 
-gem 'rails'
+gem 'rails', '4.2.0'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -33,7 +33,6 @@ gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'poltergeist', group: [:development, :test]
 gem 'rspec-collection_matchers', group: [:development, :test]
-#gem 'guard-spring', group: [:development, :test]
 gem 'guard-rspec', group:  [:development, :test]
 gem 'guard-rails', group:  [:development, :test]
 gem 'libnotify', group:  [:development, :test]
