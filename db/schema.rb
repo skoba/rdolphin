@@ -16,36 +16,36 @@ ActiveRecord::Schema.define(version: 20150217062454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "address_details", force: :cascade do |t|
-    t.string   "name"
-    t.string   "value"
+  create_table "address_details", force: true do |t|
+    t.string   "name",         limit: nil
+    t.string   "value",        limit: nil
     t.integer  "address_id"
-    t.string   "address_type"
+    t.string   "address_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "address_details", ["address_type", "address_id"], name: "index_address_details_on_address_type_and_address_id", using: :btree
 
-  create_table "addresses", force: :cascade do |t|
-    t.string   "meaning"
-    t.string   "name"
+  create_table "addresses", force: true do |t|
+    t.string   "meaning",      limit: nil
+    t.string   "name",         limit: nil
     t.integer  "contact_id"
-    t.string   "contact_type"
+    t.string   "contact_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "addresses", ["contact_type", "contact_id"], name: "index_addresses_on_contact_type_and_contact_id", using: :btree
 
-  create_table "compositions", force: :cascade do |t|
-    t.string   "category"
-    t.string   "name"
-    t.string   "nodeid"
-    t.string   "uid"
-    t.string   "archetypeid"
-    t.string   "templateid"
-    t.string   "rm_version"
+  create_table "compositions", force: true do |t|
+    t.string   "category",    limit: nil
+    t.string   "name",        limit: nil
+    t.string   "nodeid",      limit: nil
+    t.string   "uid",         limit: nil
+    t.string   "archetypeid", limit: nil
+    t.string   "templateid",  limit: nil
+    t.string   "rm_version",  limit: nil
     t.integer  "ehr_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -53,28 +53,28 @@ ActiveRecord::Schema.define(version: 20150217062454) do
 
   add_index "compositions", ["ehr_id"], name: "index_compositions_on_ehr_id", using: :btree
 
-  create_table "contacts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "purpose"
+  create_table "contacts", force: true do |t|
+    t.string   "name",       limit: nil
+    t.string   "purpose",    limit: nil
     t.date     "valid_from"
     t.date     "valid_to"
     t.integer  "party_id"
-    t.string   "party_type"
+    t.string   "party_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "contacts", ["party_type", "party_id"], name: "index_contacts_on_party_type_and_party_id", using: :btree
 
-  create_table "content_items", force: :cascade do |t|
-    t.string   "name"
-    t.string   "archetypeid"
-    t.string   "rm_type"
-    t.string   "nodeid"
-    t.string   "path"
+  create_table "content_items", force: true do |t|
+    t.string   "name",              limit: nil
+    t.string   "archetypeid",       limit: nil
+    t.string   "rm_type",           limit: nil
+    t.string   "nodeid",            limit: nil
+    t.string   "path",              limit: nil
     t.integer  "composition_id"
     t.integer  "content_item_id"
-    t.string   "content_item_type"
+    t.string   "content_item_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,70 +82,70 @@ ActiveRecord::Schema.define(version: 20150217062454) do
   add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
   add_index "content_items", ["content_item_type", "content_item_id"], name: "index_content_items_on_content_item_type_and_content_item_id", using: :btree
 
-  create_table "data_values", force: :cascade do |t|
+  create_table "data_values", force: true do |t|
     t.boolean  "bool_value"
-    t.string   "text_value"
+    t.string   "text_value",      limit: nil
     t.integer  "int_value"
     t.float    "real_value"
     t.decimal  "decimal_value"
-    t.string   "unit"
+    t.string   "unit",            limit: nil
     t.date     "date_value"
     t.datetime "date_time_value"
-    t.string   "code"
+    t.string   "code",            limit: nil
     t.integer  "item_id"
-    t.string   "item_type"
+    t.string   "item_type",       limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "data_values", ["item_type", "item_id"], name: "index_data_values_on_item_type_and_item_id", using: :btree
 
-  create_table "detail_items", force: :cascade do |t|
-    t.string   "name"
-    t.string   "value"
+  create_table "detail_items", force: true do |t|
+    t.string   "name",              limit: nil
+    t.string   "value",             limit: nil
     t.integer  "party_detail_id"
-    t.string   "party_detail_type"
+    t.string   "party_detail_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "detail_items", ["party_detail_type", "party_detail_id"], name: "index_detail_items_on_party_detail_type_and_party_detail_id", using: :btree
 
-  create_table "ehrs", force: :cascade do |t|
+  create_table "ehrs", force: true do |t|
     t.integer  "person_id"
-    t.string   "system_id"
+    t.string   "system_id",  limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "ehrs", ["person_id"], name: "index_ehrs_on_person_id", using: :btree
 
-  create_table "identity_details", force: :cascade do |t|
-    t.string   "name"
-    t.string   "value"
+  create_table "identity_details", force: true do |t|
+    t.string   "name",                limit: nil
+    t.string   "value",               limit: nil
     t.integer  "party_identity_id"
-    t.string   "party_identity_type"
+    t.string   "party_identity_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "item_proxies", force: :cascade do |t|
+  create_table "item_proxies", force: true do |t|
     t.integer  "item_id"
-    t.string   "item_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "item_type",  limit: nil
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "item_proxies", ["item_type", "item_id"], name: "index_item_proxies_on_item_type_and_item_id", using: :btree
 
-  create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.string   "rm_type"
-    t.string   "archetypeid"
-    t.string   "nodeid"
-    t.string   "path"
+  create_table "items", force: true do |t|
+    t.string   "name",          limit: nil
+    t.string   "rm_type",       limit: nil
+    t.string   "archetypeid",   limit: nil
+    t.string   "nodeid",        limit: nil
+    t.string   "path",          limit: nil
     t.integer  "entry_id"
-    t.string   "entry_type"
+    t.string   "entry_type",    limit: nil
     t.integer  "item_proxy_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -154,44 +154,43 @@ ActiveRecord::Schema.define(version: 20150217062454) do
   add_index "items", ["entry_type", "entry_id"], name: "index_items_on_entry_type_and_entry_id", using: :btree
   add_index "items", ["item_proxy_id"], name: "index_items_on_item_proxy_id", using: :btree
 
-  create_table "parties", force: :cascade do |t|
-    t.string   "name"
-    t.string   "meaning"
+  create_table "parties", force: true do |t|
+    t.string   "name",       limit: nil
+    t.string   "meaning",    limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "party_details", force: :cascade do |t|
-    t.string   "name"
-    t.string   "purpose"
+  create_table "party_details", force: true do |t|
+    t.string   "name",       limit: nil
+    t.string   "purpose",    limit: nil
     t.integer  "party_id"
-    t.string   "party_type"
+    t.string   "party_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "party_details", ["party_type", "party_id"], name: "index_party_details_on_party_type_and_party_id", using: :btree
 
-  create_table "party_identities", force: :cascade do |t|
-    t.string   "name"
-    t.string   "purpose"
+  create_table "party_identities", force: true do |t|
+    t.string   "name",       limit: nil
+    t.string   "purpose",    limit: nil
     t.integer  "party_id"
-    t.string   "party_type"
+    t.string   "party_type", limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "party_identities", ["party_type", "party_id"], name: "index_party_identities_on_party_type_and_party_id", using: :btree
 
-  create_table "versions", force: :cascade do |t|
-    t.string   "lifecycle_state"
+  create_table "versions", force: true do |t|
+    t.string   "lifecycle_state", limit: nil
     t.integer  "ehr_id"
-    t.string   "uid"
+    t.string   "uid",             limit: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "versions", ["ehr_id"], name: "index_versions_on_ehr_id", using: :btree
 
-  add_foreign_key "item_proxies", "items"
 end
