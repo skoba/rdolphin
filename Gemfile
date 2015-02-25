@@ -42,6 +42,7 @@ gem 'shoulda-matchers', group: :test
 gem 'guard-livereload', group: :development, require: false
 gem 'rubocop', group: :development, require: false
 gem 'guard-rubocop', group: [:development, :test]
+gem 'seed-fu'
 
 require 'rbconfig'
 if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/

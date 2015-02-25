@@ -9,7 +9,7 @@ RSpec.describe VersionLifecycleState, type: :model do
 
   describe 'id 532 is "complete"' do
     it 'id is 532' do
-      expect(state.id).to eq 532
+      expect(state.conceptid).to eq 532
     end
 
     it 'rubric is "complete"' do
