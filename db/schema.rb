@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224201912) do
+ActiveRecord::Schema.define(version: 20150303060611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,31 @@ ActiveRecord::Schema.define(version: 20150224201912) do
   end
 
   add_index "addresses", ["contact_type", "contact_id"], name: "index_addresses_on_contact_type_and_contact_id", using: :btree
+
+  create_table "component_proxies", force: :cascade do |t|
+    t.integer  "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "component_proxies", ["folder_id"], name: "index_component_proxies_on_folder_id", using: :btree
+
+  create_table "components", force: :cascade do |t|
+    t.integer  "component_proxy_id"
+    t.integer  "version_number"
+    t.integer  "version_lifecycle_status_id"
+    t.integer  "language_id"
+    t.integer  "ehr_id"
+    t.integer  "party_proxy_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "components", ["component_proxy_id"], name: "index_components_on_component_proxy_id", using: :btree
+  add_index "components", ["ehr_id"], name: "index_components_on_ehr_id", using: :btree
+  add_index "components", ["language_id"], name: "index_components_on_language_id", using: :btree
+  add_index "components", ["party_proxy_id"], name: "index_components_on_party_proxy_id", using: :btree
+  add_index "components", ["version_lifecycle_status_id"], name: "index_components_on_version_lifecycle_status_id", using: :btree
 
   create_table "compositions", force: :cascade do |t|
     t.string   "category"
@@ -155,8 +180,8 @@ ActiveRecord::Schema.define(version: 20150224201912) do
   add_index "items", ["item_proxy_id"], name: "index_items_on_item_proxy_id", using: :btree
 
   create_table "languages", force: :cascade do |t|
-    t.string   "code"
-    t.string   "description"
+    t.string   "code",        null: false
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -201,4 +226,5 @@ ActiveRecord::Schema.define(version: 20150224201912) do
   add_index "version_lifecycle_states", ["conceptid"], name: "index_version_lifecycle_states_on_conceptid", using: :btree
   add_index "version_lifecycle_states", ["language_id"], name: "index_version_lifecycle_states_on_language_id", using: :btree
 
+  add_foreign_key "components", "ehrs"
 end
