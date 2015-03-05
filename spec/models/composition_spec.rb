@@ -14,7 +14,7 @@ RSpec.describe Composition, :type => :model do
   end
 
   specify 'name is MML Labo test report' do
-    expect(composition.name).to eq 'MML Lab test report'
+    expect(composition.name).to eq 'Test spec'
   end
 
   specify 'nodeid is at0000' do
@@ -25,12 +25,12 @@ RSpec.describe Composition, :type => :model do
     expect(composition.uid).to eq '0000-1111-2222-3333'
   end
 
-  specify 'archetypeid is penEHR-EHR-COMPOSITION.report-mml_lab_test.v1' do
-    expect(composition.archetypeid).to eq 'openEHR-EHR-COMPOSITION.report-mml_lab_test.v1'
+  specify 'archetypeid is penEHR-EHR-COMPOSITION.test.v1' do
+    expect(composition.archetypeid).to eq 'openEHR-EHR-COMPOSITION.test.v1'
   end
 
-  specify 'templeteid is MML Lab Test' do
-    expect(composition.templateid).to eq 'MML Lab Test'
+  specify 'templeteid is Test specs' do
+    expect(composition.templateid).to eq 'Test specs'
   end
 
   specify 'rm version is 1.0.2' do

@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.2.0'
+#ruby '2.1.5'
 
-gem 'rails'
+gem 'rails', '4.2.0'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -32,7 +33,6 @@ gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'poltergeist', group: [:development, :test]
 gem 'rspec-collection_matchers', group: [:development, :test]
-gem 'guard-spring', group: [:development, :test]
 gem 'guard-rspec', group:  [:development, :test]
 gem 'guard-rails', group:  [:development, :test]
 gem 'libnotify', group:  [:development, :test]
@@ -42,6 +42,7 @@ gem 'shoulda-matchers', group: :test
 gem 'guard-livereload', group: :development, require: false
 gem 'rubocop', group: :development, require: false
 gem 'guard-rubocop', group: [:development, :test]
+gem 'seed-fu'
 
 require 'rbconfig'
 if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/

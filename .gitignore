@@ -3,8 +3,8 @@
 .bundle
 .config
 .yardoc
-#Gemfile.lock
 InstalledFiles
+Gemfile.lock
 _yardoc
 coverage
 doc/

@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'mml'
 
 RSpec.describe MMLPatient, :type => :model do
-  let(:mml_patient) { create :mml_patient }
+#  let(:mml_patient) { create :mml_patient }
 
   # context 'unique info' do
   #   it 'master_id is abcdefg' do
