@@ -1,5 +1,5 @@
-class Composition < ActiveRecord::Base
-  belongs_to :ehr
+class Composition < Component
+#  belongs_to :ehr
   has_many :content_items
 
   def partial

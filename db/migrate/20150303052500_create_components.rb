@@ -7,6 +7,13 @@ class CreateComponents < ActiveRecord::Migration
       t.references :language, index: true
       t.references :ehr, index: true
       t.references :party_proxy, index: true
+      t.references :category, index: true
+      t.string :uid, index: true
+      t.datetime :start_time
+      t.datetime :end_time
+      t.string :location
+      t.references :setting, index: true
+      
 
       t.timestamps null: false
     end
