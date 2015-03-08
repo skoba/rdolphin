@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303060611) do
+ActiveRecord::Schema.define(version: 20150308101810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,24 @@ ActiveRecord::Schema.define(version: 20150303060611) do
 
   add_index "addresses", ["contact_type", "contact_id"], name: "index_addresses_on_contact_type_and_contact_id", using: :btree
 
+  create_table "code_groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "code_sets", force: :cascade do |t|
+    t.integer  "conceptid"
+    t.string   "rubric"
+    t.integer  "language_id"
+    t.integer  "code_group_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "code_sets", ["code_group_id"], name: "index_code_sets_on_code_group_id", using: :btree
+  add_index "code_sets", ["language_id"], name: "index_code_sets_on_language_id", using: :btree
+
   create_table "component_proxies", force: :cascade do |t|
     t.integer  "folder_id"
     t.datetime "created_at", null: false
@@ -53,30 +71,28 @@ ActiveRecord::Schema.define(version: 20150303060611) do
     t.integer  "language_id"
     t.integer  "ehr_id"
     t.integer  "party_proxy_id"
+    t.integer  "category_id"
+    t.string   "uid"
+    t.string   "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "location"
+    t.integer  "setting_id"
+    t.string   "nodeid"
+    t.string   "rm_version"
+    t.string   "archetypeid"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "components", ["category_id"], name: "index_components_on_category_id", using: :btree
   add_index "components", ["component_proxy_id"], name: "index_components_on_component_proxy_id", using: :btree
   add_index "components", ["ehr_id"], name: "index_components_on_ehr_id", using: :btree
   add_index "components", ["language_id"], name: "index_components_on_language_id", using: :btree
   add_index "components", ["party_proxy_id"], name: "index_components_on_party_proxy_id", using: :btree
+  add_index "components", ["setting_id"], name: "index_components_on_setting_id", using: :btree
+  add_index "components", ["uid"], name: "index_components_on_uid", using: :btree
   add_index "components", ["version_lifecycle_status_id"], name: "index_components_on_version_lifecycle_status_id", using: :btree
-
-  create_table "compositions", force: :cascade do |t|
-    t.string   "category"
-    t.string   "name"
-    t.string   "nodeid"
-    t.string   "uid"
-    t.string   "archetypeid"
-    t.string   "templateid"
-    t.string   "rm_version"
-    t.integer  "ehr_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "compositions", ["ehr_id"], name: "index_compositions_on_ehr_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -180,8 +196,8 @@ ActiveRecord::Schema.define(version: 20150303060611) do
   add_index "items", ["item_proxy_id"], name: "index_items_on_item_proxy_id", using: :btree
 
   create_table "languages", force: :cascade do |t|
-    t.string   "code",        null: false
-    t.string   "description", null: false
+    t.string   "code"
+    t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -215,16 +231,7 @@ ActiveRecord::Schema.define(version: 20150303060611) do
 
   add_index "party_identities", ["party_type", "party_id"], name: "index_party_identities_on_party_type_and_party_id", using: :btree
 
-  create_table "version_lifecycle_states", force: :cascade do |t|
-    t.integer  "conceptid"
-    t.string   "rubric"
-    t.integer  "language_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "version_lifecycle_states", ["conceptid"], name: "index_version_lifecycle_states_on_conceptid", using: :btree
-  add_index "version_lifecycle_states", ["language_id"], name: "index_version_lifecycle_states_on_language_id", using: :btree
-
+  add_foreign_key "code_sets", "code_groups"
+  add_foreign_key "code_sets", "languages"
   add_foreign_key "components", "ehrs"
 end

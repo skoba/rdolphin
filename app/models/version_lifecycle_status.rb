@@ -1,0 +1,2 @@
+class VersionLifecycleStatus < CodeSet
+end

@@ -9,11 +9,14 @@ class CreateComponents < ActiveRecord::Migration
       t.references :party_proxy, index: true
       t.references :category, index: true
       t.string :uid, index: true
+      t.string :name
       t.datetime :start_time
       t.datetime :end_time
       t.string :location
       t.references :setting, index: true
-      
+      t.string :nodeid
+      t.string :rm_version
+      t.string :archetypeid
 
       t.timestamps null: false
     end
