@@ -4,6 +4,8 @@ class CreateComponents < ActiveRecord::Migration
       t.references :component_proxy, index: true
       t.integer :version_number
       t.references :version_lifecycle_status, index: true
+      t.string :templateid
+      t.string :uid
       t.references :language, index: true
       t.references :ehr, index: true
       t.references :party_proxy, index: true

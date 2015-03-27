@@ -1,6 +1,6 @@
 class Composition < Component
-#  belongs_to :ehr
   has_many :content_items
+  belongs_to :category
 
   def partial
     "#{name.downcase.tr(' ', '_')}"
