@@ -3,14 +3,27 @@ require 'rails_helper'
 RSpec.describe Composition, :type => :model do
   subject { build :composition }
 
-  it {is_expected.to be_valid}
-  it {is_expected.to belong_to :ehr}
+  subject { Composition.new }
+
+  it { is_expected.to be_valid }
+  it { is_expected.to belong_to :ehr }
+  it {is_expected.to belong_to :category }
   it {is_expected.to have_many :content_items}
 
   let(:composition) {build :composition}
+  # let(:composition) do
+  #   Composition.new nodeid: 'at0000',
+  #                   rm_version: '1.0.2',
+  #                   archetypeid: 'openEHR-EHR-COMPOSITION.test.v1',
+  #                   templateid: 'Test specs',
+  #                   name: 'Test spec',
+  #                   uid: '0000-1111-2222-3333',
+  #                   category: Category.new(rubric: 'persistent', conceptid: '432')
+  # end
+  
 
   specify 'category is persisitent' do
-    expect(composition.category).to eq 'persistent'
+    expect(composition.category.rubric).to eq 'persistent'
   end
 
   specify 'name is MML Labo test report' do
