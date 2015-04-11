@@ -9,13 +9,13 @@ FactoryGirl.define do
     archetypeid 'openEHR-EHR-COMPOSITION.test.v1'
     templateid 'Test specs'
     rm_version '1.0.2'
-    after(:create) do |composition|
-      create :persistent, composition: composition
-    end
+    # after(:create) do |composition|
+    #   create :persistent, composition: composition
+    # end
   end
 
   factory :lab_test, class: Composition do
-    category :persistent # "persistent"
+#    category :persistent # "persistent"
     name 'Lab test report'
     nodeid 'at0000'
     uid '1111-2222-3333-4444'
@@ -25,7 +25,7 @@ FactoryGirl.define do
   end
 
   factory :prescription, class: Composition do
-    category :persistent # "persistent"
+#    category :persistent # "persistent"
     name 'Prescription'
     nodeid 'at0000'
     uid '1111-2222-3333-4444'

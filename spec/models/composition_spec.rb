@@ -7,7 +7,7 @@ RSpec.describe Composition, :type => :model do
 
   it { is_expected.to be_valid }
   it { is_expected.to belong_to :ehr }
-  it {is_expected.to belong_to :category }
+#  it {is_expected.to belong_to :category }
   it {is_expected.to have_many :content_items}
 
   let(:composition) {build :composition}
@@ -22,9 +22,9 @@ RSpec.describe Composition, :type => :model do
   # end
   
 
-  specify 'category is persisitent' do
-    expect(composition.category.rubric).to eq 'persistent'
-  end
+  # specify 'category is persisitent' do
+  #   expect(composition.category.rubric).to eq 'persistent'
+  # end
 
   specify 'name is MML Labo test report' do
     expect(composition.name).to eq 'Test spec'
