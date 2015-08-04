@@ -10,6 +10,7 @@ FactoryGirl.define do
   end
 
   factory :lab_test, class: Composition do
+#    category :persistent # "persistent"
     name 'Lab test report'
     nodeid 'at0000'
     uid '1111-2222-3333-4444'
@@ -20,6 +21,7 @@ FactoryGirl.define do
   end
 
   factory :prescription, class: Composition do
+
 #    association :category, factory: :persistent # "persistent"
     name 'Prescription'
     nodeid 'at0000'
