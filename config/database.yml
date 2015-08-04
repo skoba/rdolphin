@@ -4,7 +4,7 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  username: postgres
+  username: ehr
 
 development:
   <<: *default
@@ -17,5 +17,5 @@ test:
 production:
   <<: *default
   database: rdolphin_production
-  username: postgres
+  username: ehr
   password: <%= ENV['RDOLPHIN_DATABASE_PASSWORD'] %>

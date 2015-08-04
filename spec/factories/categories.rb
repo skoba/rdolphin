@@ -3,4 +3,8 @@ FactoryGirl.define do
     conceptid 431
     rubric 'persistent'
   end
+
+  # factory :category do
+
+  # end
 end

@@ -7,10 +7,10 @@ RSpec.describe Composition, :type => :model do
 
   it { is_expected.to be_valid }
   it { is_expected.to belong_to :ehr }
-  it {is_expected.to belong_to :category }
-  it {is_expected.to have_many :content_items}
+  it { is_expected.to belong_to :category }
+  it { is_expected.to have_many :content_items }
 
-  let(:composition) {build :composition}
+  let(:composition) { create :composition }
   # let(:composition) do
   #   Composition.new nodeid: 'at0000',
   #                   rm_version: '1.0.2',
