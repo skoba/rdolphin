@@ -1,5 +1,3 @@
 Rails.application.routes.draw do
-  resources :compositions
-  resources :mml_patients
-  resources :mml_lab_tests
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
