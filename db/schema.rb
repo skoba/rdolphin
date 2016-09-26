@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -23,9 +22,8 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "address_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["address_type", "address_id"], name: "index_address_details_on_address_type_and_address_id", using: :btree
   end
-
-  add_index "address_details", ["address_type", "address_id"], name: "index_address_details_on_address_type_and_address_id", using: :btree
 
   create_table "addresses", force: :cascade do |t|
     t.string   "meaning"
@@ -34,9 +32,8 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "contact_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["contact_type", "contact_id"], name: "index_addresses_on_contact_type_and_contact_id", using: :btree
   end
-
-  add_index "addresses", ["contact_type", "contact_id"], name: "index_addresses_on_contact_type_and_contact_id", using: :btree
 
   create_table "code_groups", force: :cascade do |t|
     t.string   "name"
@@ -51,18 +48,16 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.integer  "code_group_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["code_group_id"], name: "index_code_sets_on_code_group_id", using: :btree
+    t.index ["language_id"], name: "index_code_sets_on_language_id", using: :btree
   end
-
-  add_index "code_sets", ["code_group_id"], name: "index_code_sets_on_code_group_id", using: :btree
-  add_index "code_sets", ["language_id"], name: "index_code_sets_on_language_id", using: :btree
 
   create_table "component_proxies", force: :cascade do |t|
     t.integer  "folder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_component_proxies_on_folder_id", using: :btree
   end
-
-  add_index "component_proxies", ["folder_id"], name: "index_component_proxies_on_folder_id", using: :btree
 
   create_table "components", force: :cascade do |t|
     t.integer  "component_proxy_id"
@@ -84,16 +79,15 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "archetypeid"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["category_id"], name: "index_components_on_category_id", using: :btree
+    t.index ["component_proxy_id"], name: "index_components_on_component_proxy_id", using: :btree
+    t.index ["ehr_id"], name: "index_components_on_ehr_id", using: :btree
+    t.index ["language_id"], name: "index_components_on_language_id", using: :btree
+    t.index ["party_proxy_id"], name: "index_components_on_party_proxy_id", using: :btree
+    t.index ["setting_id"], name: "index_components_on_setting_id", using: :btree
+    t.index ["uid"], name: "index_components_on_uid", using: :btree
+    t.index ["version_lifecycle_status_id"], name: "index_components_on_version_lifecycle_status_id", using: :btree
   end
-
-  add_index "components", ["category_id"], name: "index_components_on_category_id", using: :btree
-  add_index "components", ["component_proxy_id"], name: "index_components_on_component_proxy_id", using: :btree
-  add_index "components", ["ehr_id"], name: "index_components_on_ehr_id", using: :btree
-  add_index "components", ["language_id"], name: "index_components_on_language_id", using: :btree
-  add_index "components", ["party_proxy_id"], name: "index_components_on_party_proxy_id", using: :btree
-  add_index "components", ["setting_id"], name: "index_components_on_setting_id", using: :btree
-  add_index "components", ["uid"], name: "index_components_on_uid", using: :btree
-  add_index "components", ["version_lifecycle_status_id"], name: "index_components_on_version_lifecycle_status_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -104,9 +98,8 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "party_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["party_type", "party_id"], name: "index_contacts_on_party_type_and_party_id", using: :btree
   end
-
-  add_index "contacts", ["party_type", "party_id"], name: "index_contacts_on_party_type_and_party_id", using: :btree
 
   create_table "content_items", force: :cascade do |t|
     t.string   "name"
@@ -119,10 +112,9 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "content_item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
+    t.index ["content_item_type", "content_item_id"], name: "index_content_items_on_content_item_type_and_content_item_id", using: :btree
   end
-
-  add_index "content_items", ["composition_id"], name: "index_content_items_on_composition_id", using: :btree
-  add_index "content_items", ["content_item_type", "content_item_id"], name: "index_content_items_on_content_item_type_and_content_item_id", using: :btree
 
   create_table "data_values", force: :cascade do |t|
     t.boolean  "bool_value"
@@ -138,9 +130,8 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["item_type", "item_id"], name: "index_data_values_on_item_type_and_item_id", using: :btree
   end
-
-  add_index "data_values", ["item_type", "item_id"], name: "index_data_values_on_item_type_and_item_id", using: :btree
 
   create_table "detail_items", force: :cascade do |t|
     t.string   "name"
@@ -149,18 +140,16 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "party_detail_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["party_detail_type", "party_detail_id"], name: "index_detail_items_on_party_detail_type_and_party_detail_id", using: :btree
   end
-
-  add_index "detail_items", ["party_detail_type", "party_detail_id"], name: "index_detail_items_on_party_detail_type_and_party_detail_id", using: :btree
 
   create_table "ehrs", force: :cascade do |t|
     t.integer  "person_id"
     t.string   "system_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["person_id"], name: "index_ehrs_on_person_id", using: :btree
   end
-
-  add_index "ehrs", ["person_id"], name: "index_ehrs_on_person_id", using: :btree
 
   create_table "identity_details", force: :cascade do |t|
     t.string   "name"
@@ -176,9 +165,8 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "item_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_type", "item_id"], name: "index_item_proxies_on_item_type_and_item_id", using: :btree
   end
-
-  add_index "item_proxies", ["item_type", "item_id"], name: "index_item_proxies_on_item_type_and_item_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -191,10 +179,9 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.integer  "item_proxy_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["entry_type", "entry_id"], name: "index_items_on_entry_type_and_entry_id", using: :btree
+    t.index ["item_proxy_id"], name: "index_items_on_item_proxy_id", using: :btree
   end
-
-  add_index "items", ["entry_type", "entry_id"], name: "index_items_on_entry_type_and_entry_id", using: :btree
-  add_index "items", ["item_proxy_id"], name: "index_items_on_item_proxy_id", using: :btree
 
   create_table "languages", force: :cascade do |t|
     t.string   "code"
@@ -217,9 +204,8 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "party_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["party_type", "party_id"], name: "index_party_details_on_party_type_and_party_id", using: :btree
   end
-
-  add_index "party_details", ["party_type", "party_id"], name: "index_party_details_on_party_type_and_party_id", using: :btree
 
   create_table "party_identities", force: :cascade do |t|
     t.string   "name"
@@ -228,9 +214,8 @@ ActiveRecord::Schema.define(version: 20150308101810) do
     t.string   "party_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["party_type", "party_id"], name: "index_party_identities_on_party_type_and_party_id", using: :btree
   end
-
-  add_index "party_identities", ["party_type", "party_id"], name: "index_party_identities_on_party_type_and_party_id", using: :btree
 
   add_foreign_key "code_sets", "code_groups"
   add_foreign_key "code_sets", "languages"

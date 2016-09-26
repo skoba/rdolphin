@@ -5,7 +5,7 @@ end
 
 ignore! %r{\.#.+}
 group :red_green_refactor, halt_on_fail: true do
-  guard :rspec, all_after_pass: true, all_on_start: true, cmd: "bin/rspec" do
+  guard :rspec, all_after_pass: true, all_on_start: true, cmd: "spring rspec" do
     require "guard/rspec/dsl"
     dsl = Guard::RSpec::Dsl.new(self)
     
@@ -58,11 +58,11 @@ group :red_green_refactor, halt_on_fail: true do
   end
 end
 
-guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)$})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
-end
+# guard 'livereload' do
+#   watch(%r{app/views/.+\.(erb|haml|slim)$})
+#   watch(%r{app/helpers/.+\.rb})
+#   watch(%r{public/.+\.(css|js|html)})
+#   watch(%r{config/locales/.+\.yml})
+#   # Rails Assets Pipeline
+#   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+# end
