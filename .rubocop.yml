@@ -1,7 +1,7 @@
 # .rubocop.yml
 inherit_from: .rubocop_todo.yml
 
-Style/RedundantSelf:
+Style/SpaceBeforeFirstArg:
   Enabled: true
 
 Lint/HandleExceptions:

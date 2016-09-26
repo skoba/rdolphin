@@ -43,6 +43,7 @@ gem 'guard-livereload', group: :development, require: false
 gem 'rubocop', group: :development, require: false
 gem 'guard-rubocop', group: [:development, :test]
 gem 'seed-fu'
+gem 'rails-controller-testing', group: :test, require: false
 
 require 'rbconfig'
 if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/

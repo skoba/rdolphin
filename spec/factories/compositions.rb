@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :composition do
-    association :category, factory: :persistent
+#    association :category, factory: :persistent
     name 'Test spec'
     nodeid 'at0000'
     uid '0000-1111-2222-3333'
