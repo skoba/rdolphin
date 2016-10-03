@@ -1,17 +1,22 @@
 # .rubocop.yml
-inherit_from: .rubocop_todo.yml
+#inherit_from: .rubocop_todo.yml
+inherit_gem:
+  meowcop:
+    - config/rubocop.yml
+#Rails:
+#  Enabled: true
 
-Style/SpaceBeforeFirstArg:
-  Enabled: true
+#Style/SpaceBeforeFirstArg:
+#  Enabled: true
 
-Lint/HandleExceptions:
-  Enabled: false
+#Lint/HandleExceptions:
+#  Enabled: false
 
-Lint/ParenthesesAsGroupedExpression:
-  Enabled: true
+#Lint/ParenthesesAsGroupedExpression:
+#  Enabled: true
 
-Metrics/AbcSize:
-  Max: 15
+#Metrics/AbcSize:
+#  Max: 15
 
 
   

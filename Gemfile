@@ -41,7 +41,8 @@ gem "spring-commands-rspec", group: [:development, :test]
 gem 'shoulda-matchers', group: :test
 gem 'guard-livereload', group: :development, require: false
 gem 'rubocop', group: :development, require: false
-gem 'guard-rubocop', group: [:development, :test]
+gem 'meowcop', group: :development, require: false
+gem 'guard-rubocop', group: :development
 gem 'seed-fu'
 gem 'rails-controller-testing', group: :test, require: false
 

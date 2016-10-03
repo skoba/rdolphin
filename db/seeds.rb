@@ -15,7 +15,7 @@ end
 openehr_terms.xpath('terminology/group[@name="version lifecycle state"]/concept').each do |concept|
   VersionLifecycleState.create(conceptid: concept.attr('id'),
                                rubric: concept.attr('rubric'),
-                               language:
+                               language: 'en')
 end
 
 #openehr_terms = 
