@@ -12,6 +12,6 @@ services:
 
 before_script:
   - psql -c 'create database rdolphin_test;' -U postgres
-  - cp config/database.travis.yml config/database.yml
+  - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:create
   - bundle exec rake db:migrate
