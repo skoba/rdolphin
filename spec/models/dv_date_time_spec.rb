@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe DvDateTime do
   let(:dv_date_time) {build :dv_date_time}
   subject {dv_date_time}
